@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <poke-header />
+    <poke-header 
+      :pokeList="pokeList"
+    />
     <poke-results />
-
   </div>
 </template>
 
