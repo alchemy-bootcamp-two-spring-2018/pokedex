@@ -2,17 +2,20 @@
   <div id="app">
     <h1>Poke Dex</h1>
     <section id="header-filter">
+    </section>
       <pokeFilter
       v-bind:filter="filter"
       />
-    </section>
     <section id="pokemon-display">
-      <tile/>
+      <tile 
+        v-bind:pokeTiles= "list"
+      />
     </section>
   </div>
 </template>
 
 <script>
+import pokeDex from './pokemon.js'
 import tile from './components/tile.vue'
 import pokeFilter from './components/pokeFilter.vue'
 
@@ -20,6 +23,7 @@ export default {
   name: 'app',
   data(){
     return {
+      list: pokeDex,
       filter: {
         type: '',
       }
