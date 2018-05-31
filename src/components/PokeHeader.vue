@@ -24,7 +24,7 @@ export default {
     props: ['pokeList'],
     methods: {
         remDupes() {
-            return this.pokeList.filter((el, i, arr) => arr.indexOf(el) === i);
+            // return this.pokeList.filter((el, i, arr) => arr.indexOf(el) === i);
         }
     }
 }
