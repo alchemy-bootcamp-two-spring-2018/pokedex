@@ -1,9 +1,15 @@
 <template>
   <div id="app">
     <poke-header 
-      :pokeList="pokeList"
+      :pokeList="remDupes"
+      @change="filterTypes"
+      @name="sortName"
+      @type="sortType"
+      @all="displayAll"
     />
-    <poke-results />
+    <poke-results
+      :banana="filteredList"
+    />
   </div>
 </template>
 
@@ -14,13 +20,37 @@ import pokeList from './assets/pokemon.js'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      pokeList: pokeList,
+      filteredList: ''
+    }
+  },
   components: {
     PokeHeader,
     PokeResults
   },
-  data() {
-    return {
-      pokeList: pokeList
+  methods: {
+    filterTypes(pokeType) {
+      this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
+    },
+    displayAll() {
+      this.filteredList = this.pokeList;
+    },
+    sortName() {
+      // Compare strings
+      this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+    },
+    sortType() {
+      // Compare strings
+      this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+    }
+  },
+  computed: {
+    remDupes() {
+      return this.pokeList.filter((obj, pos, arr) => {
+          return this.pokeList.map(mapObj => mapObj.type_1).indexOf(obj.type_1) === pos;
+      });
     }
   }
 }
