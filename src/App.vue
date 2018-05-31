@@ -8,7 +8,7 @@
     </section>
 
     <section class="results">
-      <PokedexResults/>
+      <PokedexResults :pokemon="list"/>
     </section>
     
   </div>
@@ -17,17 +17,19 @@
 
 <script>
 
-import pokemon from '../pokemon.js';
+
 import PokedexHeader from './components/PokedexHeader.vue';
 import PokedexResults from './components/PokedexResults.vue';
+import pokemon from '../pokemon.js';
 
 export default {
-
   data() {
     return {
       list: pokemon
     };
   },
+
+
 
   components: {
     PokedexHeader,
@@ -35,7 +37,6 @@ export default {
   }
 
 };
-
 
 </script>
 
