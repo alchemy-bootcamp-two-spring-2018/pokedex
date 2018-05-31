@@ -6,9 +6,9 @@
     </section>
 
     <section>
-      <Results />
+      <Results :pokemonList="list"/>
       
-        </section>
+    </section>
 
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
       list: Pokemon
     }
   },
+
   components: {
     Header,
     Results
