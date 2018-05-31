@@ -9,12 +9,18 @@
 <script>
 import PokeHeader from './components/PokeHeader.vue'
 import PokeResults from './components/PokeResults.vue'
+import pokeList from './assets/pokemon.js'
 
 export default {
   name: 'app',
   components: {
     PokeHeader,
     PokeResults
+  },
+  data() {
+    return {
+      pokeList: pokeList
+    }
   }
 }
 </script>
