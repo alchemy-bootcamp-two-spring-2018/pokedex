@@ -5,19 +5,19 @@
       <HeaderArea/>
     </section>
     <section class="results">
-      <ResultsArea/>
+      <ResultsViewer/>
     </section>
   </div>
 </template>
 
 <script>
 import HeaderArea from './components/Header.vue';
-import ResultsArea from './components/Results.vue';
+import ResultsViewer from './components/Results.vue';
 
 export default {
       components: {
       HeaderArea,
-      ResultsArea
+      ResultsViewer
     }
 }
 
