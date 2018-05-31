@@ -3,8 +3,9 @@
     <div
     v-for = 'pokeDex in list'
     v-bind:key = 'pokeDex.id'
-    > 
+    class="containerTile"> 
       <span>{{pokeDex.pokemon}}</span>
+      <span>{{pokeDex.type_1}}</span>
       <img v-bind:src="pokeDex.url_image">
     </div>
   </div>
@@ -41,5 +42,18 @@ li {
 }
 a {
   color: #42b983;
+}
+
+#containerTile {
+  display: flex;
+  width: 100px;
+  background-color: gray;
+}
+span {
+  display: block;
+}
+
+img {
+  width: 75px;
 }
 </style>
