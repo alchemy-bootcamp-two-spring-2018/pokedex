@@ -1,28 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <title>Pokedex</title>
+    <h1>This is our pokedex!</h1>
+    <section class="header">
+      <PokedexHeader/>
+    </section>
+    <section class="results"></section>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PokedexHeader from './components/PokedexHeader.vue';
 
 export default {
-  name: 'app',
+
   components: {
-    HelloWorld
+    PokedexHeader
   }
-}
+};
+
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
