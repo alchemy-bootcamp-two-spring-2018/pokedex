@@ -16,8 +16,6 @@
     "@vue/cli-service": "^3.0.0-beta.15",
     "vue-template-compiler": "^2.5.16"
   },
-<<<<<<< HEAD
-=======
   "eslintConfig": {
     "root": true,
     "env": {
@@ -37,7 +35,6 @@
       "autoprefixer": {}
     }
   },
->>>>>>> d7f3a0bf34e79c56c444e5b27c292a3e8c4a12cc
   "browserslist": [
     "> 1%",
     "last 2 versions",

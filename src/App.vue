@@ -1,18 +1,33 @@
 <template>
   <div id="app">
     <h1>Poke Dex</h1>
-    <img src='http://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'>
-    <tile/>
+    <section id="header-filter">
+      <pokeFilter
+      v-bind:filter="filter"
+      />
+    </section>
+    <section id="pokemon-display">
+      <tile/>
+    </section>
   </div>
 </template>
 
 <script>
 import tile from './components/tile.vue'
+import pokeFilter from './components/pokeFilter.vue'
 
 export default {
   name: 'app',
+  data(){
+    return {
+      filter: {
+        type: '',
+      }
+    }
+  },
   components: {
-    tile
+    tile,
+    pokeFilter
   }
 }
 </script>
@@ -26,4 +41,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
