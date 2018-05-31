@@ -29,11 +29,10 @@
 
 
 <script>
+import filter from './Filter.vue'
 
 export default {
     props: ['pokeList'],
-    methods: {
-    }
 }
 </script>
 
