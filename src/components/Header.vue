@@ -22,12 +22,10 @@ import Filter from './Filter.vue'
 import Sort from './Sort.vue'
 
 export default {
-
-  components: {
-    Filter,
-    Sort
-  }
-
+  props: [
+    'Filter',
+    'Sort'
+  ]
 };
 
 </script>
