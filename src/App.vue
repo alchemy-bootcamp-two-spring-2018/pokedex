@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import pokemon from '../pokemon.js';
 import Header from './components/Header.vue';
 import Results from './components/Results.vue';
 
