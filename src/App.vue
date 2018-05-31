@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Poke Dex</h1>
+    <img src='http://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'>
+    <tile/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import tile from './components/tile.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    tile
   }
 }
 </script>
