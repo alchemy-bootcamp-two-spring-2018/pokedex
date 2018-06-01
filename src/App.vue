@@ -50,14 +50,27 @@ main {
 }
 
 .header {
+  display: flex;
+  
   background: lightsteelblue;
   width: 90%;
-  flex-grow: 2;
+ 
 }
 
 .results {
   background: lightsalmon;
   width: 90%;
-  flex-grow: 5;
+
+}
+h1 {
+  font-size: 5em;
+    color: rgb(255, 247, 0);
+    line-height: 1em;
+    text-shadow: 3px 5px 1px rgb(12, 27, 168);
+    -webkit-text-stroke-color: rgb(3, 12, 247);
+    -webkit-text-stroke-width: 3px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
 }
 </style>
