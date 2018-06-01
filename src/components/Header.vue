@@ -10,14 +10,14 @@
     <section class="sort">
       <Sort :sort="sort"/>
     </section>
-    
+
   </div>
 </template>
 
 <script>
 
-import PokemonFilter from './Filter.vue'
-import Sort from './Sort.vue'
+import PokemonFilter from './Filter.vue';
+import Sort from './Sort.vue';
 
 export default {
   props: ['filter', 'sort'],

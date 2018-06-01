@@ -8,7 +8,6 @@
       <option>Type</option>
       <option>HP</option>
     </select>
-      
   </div>
 </template>
 
