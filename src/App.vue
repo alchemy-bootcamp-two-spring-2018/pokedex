@@ -28,7 +28,7 @@ export default {
     Header,
     Results
   }
-}
+};
 </script>
 
 <style>

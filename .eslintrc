@@ -18,6 +18,9 @@
     "plugins": [
       "html"
     ],
+    "settings": {
+      "html/html-extensions": [".html"]
+    },
     "rules": {
       "eqeqeq": ["error", "always"],
       "no-console": "off",
@@ -28,7 +31,7 @@
             "ignoreEOLComments": true
         }
       ],
-      "no-trailing-spaces": "warn",
+      "no-trailing-spaces": "off",
       "new-cap": "error",
       "no-redeclare": [
         "error",
