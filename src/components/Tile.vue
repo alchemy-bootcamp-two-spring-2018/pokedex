@@ -9,7 +9,7 @@
         <div class="card">
           <img :src="pokemon.url_image" alt="Pokemon image" style="width:75px">
           <div class="container">
-            <h4><b>{{pokemon.pokemon.toUpperCase()}}</b></h4>
+            <h4><b>{{pokemon.pokemon.charAt(0).toUpperCase() + pokemon.pokemon.slice(1)}}</b></h4>
             <p>Type: {{pokemon.type_1.toUpperCase()}}</p>
             <p>HP: {{pokemon.hp}}</p>
             <p>Attack: {{pokemon.attack}}</p>
