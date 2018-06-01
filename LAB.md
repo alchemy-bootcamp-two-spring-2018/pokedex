@@ -3,7 +3,8 @@ Pokedex
 
 ## Code Wars
 
-Complete [today's Kata](https://www.codewars.com/kata/insert-dashes) 
+* Complete [today's Kata](https://www.codewars.com/kata/insert-dashes).
+* Complete [Day Two Kata](https://www.codewars.com/kata/simple-validation-of-a-username-with-regex)
 
 ## App
 
