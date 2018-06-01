@@ -1,11 +1,13 @@
 <template>
   <div class="headerContainer">
     <section>
-      <Sort/>
+      <Sort
+      :sort="sort"
+      />
     </section>
     <section>
       <SearchFilter
-      :filter="pokeFilter"
+      :filter="filter"
       />
     </section>
   </div>
@@ -18,7 +20,8 @@ import Sort from './Sort.vue';
 export default {
 
   props: {
-    pokeFilter: Object,
+    filter: Object,
+    sort: Object,
   },
   components: {
     SearchFilter,
