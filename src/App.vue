@@ -33,23 +33,15 @@ export default {
     },
   computed: {
     filterPokemon() {
-      let filteredPokemon = [];
-      console.log(this.filter.type);
-      for(let i in this.pokemonList) {
-        if(this.filter.type === 'all') {
-          filteredPokemon.push(this.pokemonList[i]);
-        }
-       if(this.pokemonList[i].defense >= this.filter.defense) {
-          filteredPokemon.push(this.pokemonList[i]);
-        }
-        else if(this.pokemonList[i].type_1 === this.filter.type){
-          filteredPokemon.push(this.pokemonList[i]);
-        }
-      }
-      return filteredPokemon;
+      const{type, defense} = this.filter;
+      return pokemonList.filter(pokemon => {
+        return (type === 'all' || pokemon.type_1 === type || pokemon.type_2 === type)
+        &&(defense < 0 || pokemon.defense > defense);
+      });
     }
   }
 }
+
 
 </script>
 
