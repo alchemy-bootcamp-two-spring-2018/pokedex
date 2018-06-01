@@ -9,7 +9,7 @@
     </section>
     <section class="results">
       <ResultsViewer 
-      :pokemonList="filterPokemon"/>
+      :pokemonList="sorted"/>
     
     </section>
   </div>
@@ -25,16 +25,29 @@ export default {
       pokemonList: pokemonList,
       filter: {
         type: '',
-        defense: '',
+        defense: ''
+      },
+      sort: {
+        sortBy: ''
       }
     }
-
   },
-      components: {
-      HeaderArea,
-      ResultsViewer
+    components: {
+    HeaderArea,
+    ResultsViewer
     },
   computed: {
+      sorted() {
+        if(this.sort.sortBy === 'defense') {
+          return this.filterPokemon.slice().sort((a, b) => b.defense - a.defense);
+        }
+        else if(this.sort.sortBy === 'attack') {
+          return this.filterPokemon.slice().sort((a, b) => b.attack - a.attack);
+        }
+        else {
+          return this.filterPokemon.slice().sort((a, b) => a.id - b.id);
+        }
+    },
     filterPokemon() {
       const{type, defense} = this.filter;
       return pokemonList.filter(pokemon => {

@@ -7,6 +7,7 @@
     <p>Type 1: {{pokemon.type_1}}</p>
     <p>Type 2: {{pokemon.type_2}}</p>
     <p>Defense: {{pokemon.defense}}</p>
+    <p>Attack: {{pokemon.attack}}</p>
   </div> 
 </template>
 
@@ -31,7 +32,8 @@
   .tiles {
     border-radius: 12px;
     width: 200px;
-    max-height: 250px;
+    max-height: 260px;
     margin: 2px;
+    padding-bottom: 5px;
   }
 </style>
