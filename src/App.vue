@@ -4,6 +4,7 @@
     <section id="header-filter">
       <Header
         v-bind:filter="chosenFilter"
+        v-bind:nameSort="sortByName"
       />
     </section>
     <section id="pokemon-display">
@@ -41,20 +42,16 @@ export default {
   computed: {
     //refactor this to use the filter array method
     pocketMonsters() {
-      let filteredPokemon = [];
-      for (let i in this.list) {
-        if(this.list[i].type_1 === this.chosenFilter.type) {
-          filteredPokemon.push(this.list[i])
-        }
-      }
-      return filteredPokemon
+      return this.list.filter(pokemon => {
+        return (this.chosenFilter.type === '' || pokemon.type_1 === this.chosenFilter.type)
+      })
     }
-    //when you go to sort, refer to the pocketMonsters computed value
   },
 
   methods: {
     sortByName() {
-      pocketMonsters.sort();
+      console.log('sortingIsWorking', this.pocketMonsters)
+      this.pocketMonsters.sort();
     }
   }
 
