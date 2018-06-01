@@ -4,9 +4,9 @@
     <main>
       <section class="header">
         <Header
-          :pokeFilter="chosenFilter"
+          :filter="filter"
+          :sort="sort"
         />
-        <!-- using v-bind, pass down the variable 'filter', which I just assign here as "chosenFilter" -->
       </section>
       <section class="results">
         <Results
@@ -27,7 +27,11 @@ export default {
   data() {
     return {
       list: pokemon,
-      chosenFilter: {
+      sort: {
+        property: 'id'
+
+      },
+      filter: {
         type: '',
       }
     };
@@ -37,22 +41,22 @@ export default {
     pocketMonsters() {
       let filteredPokemon = [];
       for(let i in this.list) {
-        if(this.list[i].type_1 === this.chosenFilter.type) {
+        if(this.filter.type === '') {
+          return filteredPokemon = this.list; 
+        } else if(this.list[i].type_1 === this.filter.type) {
           filteredPokemon.push(this.list[i]);
         } 
-        // else {
-        //   filteredPokemon = this.list;
-        // }
       }
       return filteredPokemon;
     }
-  },
 
+  },
   components: {
     Header,
     Results
   }
 };
+
 </script>
 
 <style>
