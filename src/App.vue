@@ -53,5 +53,7 @@ export default {
 <style scoped>
   #app {
     text-align: center;
+    background: rgba(220, 20, 20, 0.918);
+    margin: -20px;
   }
 </style>

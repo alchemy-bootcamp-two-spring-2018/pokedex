@@ -1,8 +1,8 @@
 <template>
-  <div class="tiles">
-    <h1>
+  <div class="tiles" v-bind:style="{background:pokemon.color_1}">
+    <h3>
       {{pokemon.pokemon}}
-    </h1>
+    </h3>
     <img :src="pokemon.url_image">
   </div> 
 </template>
@@ -22,7 +22,6 @@
     height: 60px;
   }  
   .tiles {
-    background: wheat;
     width: 125px;
     margin: 2px;
 

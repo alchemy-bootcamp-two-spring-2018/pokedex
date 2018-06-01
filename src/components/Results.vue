@@ -31,5 +31,7 @@
   text-align: center;
   height: 600px;
   overflow: auto;
+  width: 80%;
+  margin: auto;
 }
 </style>
