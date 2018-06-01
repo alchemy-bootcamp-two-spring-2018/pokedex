@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>Select Type</h3>
     <select v-model="filter.type" class="pokemon-type">
       <option value="all">All</option>
       <option value="water">Water</option>
@@ -19,7 +20,8 @@
       <option value="flying">flying</option>
       <option value="grass">grass</option>
     </select>
-      <input v-model="filter.pokemon" type="numbers">
+    <h3>Minimum Defense</h3>
+      <input v-model="filter.defense" type="numbers">
   </div>
 </template>
 <script>
