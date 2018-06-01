@@ -1,10 +1,9 @@
 <template>
   <div>
       <p>Sort by name or id</p>
-      <button
-      v.model="sorted.sort"
-      v-on:click="nameSort()"
-      >Name</button>
+      <input
+      v-model="sorted.sortValue"
+      >
       <button
       v.model="sorted.sort"
       >ID#</button>
@@ -19,7 +18,7 @@
 
 export default {
 //props is data that is passed down from a parent to the component
-  props: ['sorted', 'nameSort'],
+  props: ['sorted'],
 
   }
 
