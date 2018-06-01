@@ -25,8 +25,9 @@
 
 <style>
 .tile-area {
-
-  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   text-align: center;
   height: 600px;
   overflow: auto;

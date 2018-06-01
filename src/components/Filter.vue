@@ -5,6 +5,19 @@
       <option value="water">Water</option>
       <option value="electric">Electric</option>
       <option value="ice">Ice</option>
+      <option value="fire">fire</option>
+      <option value="ground">ground</option>
+      <option value="psychic">psychic</option>
+      <option value="dragon">dragon</option>
+      <option value="dark">dark</option>
+      <option value="fairy">fairy</option>
+      <option value="ghost">ghost</option>
+      <option value="poison">poison</option>
+      <option value="rock">rock</option>
+      <option value="bug">bug</option>
+      <option value="steel">steel</option>
+      <option value="flying">flying</option>
+      <option value="grass">grass</option>
     </select>
       <input v-model="filter.pokemon">
   </div>
