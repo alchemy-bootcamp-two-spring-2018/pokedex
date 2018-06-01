@@ -46,12 +46,14 @@ export default {
       pokeList: pokeList,
       filteredList: {},
       masterList: {},
-      atkSort: false,
-      defSort: false,
-      nameSort: false,
-      typeSort: false,
-      minatk: '',
-      mindef: ''
+      nameSort: 1,
+      typeSort: 1,
+      atkSort: 1,
+      defSort: 1,
+      filterType: '',
+      sortType: '',
+      minatk: 0,
+      mindef: 0
     }
   },
   components: {
@@ -63,68 +65,96 @@ export default {
       this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
       // tempList used to revert back from any array mutations
       this.masterList = this.filteredList;
-  },
+      // Make sure sorting options persist through type changes
+      switch(this.sortType) {
+        case'name':
+          this.nameSort = -this.nameSort;
+          this.sortName();
+          break;
+        case'type':
+          this.typeSort = -this.typeSort;
+          this.sortType(-this.typeSort);
+          break;
+        case'atk':
+          this.atkSort = -this.atkSort;
+          this.sortAtk(-this.atkSort);
+          break;
+        case'def':
+          this.defSort = -this.defSort;
+          this.sortDef(-this.defSort);
+          break;
+      }
+      switch(this.filterType) {
+        case('atk'):
+          this.filterAtk(this.minatk);
+          break;
+        case('def'):
+          this.filterDef(this.mindef);
+          break;
+      }
+    },
     displayAll() {
       this.filteredList = this.pokeList;
     },
     sortName() {
+      this.sortType = 'name';
       // Using nameSort helps toggle the order (a-z || z-a)
-      if(this.nameSort) {
-        this.nameSort = false;
-      // Compare strings
+      if(this.nameSort !== 1) {
+        // Compare strings
         this.filteredList.sort((a, b) => ('' + b.pokemon).localeCompare(a.pokemon));
       } else {
-        this.nameSort = true;
-      // Compare strings
+        // Compare strings
         this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
       }
+        this.nameSort = -this.nameSort;
     },
     sortType() {
+      this.sortType = 'type';
       // Using typeSort helps toggle the order (a-z || z-a)
-      if(this.typeSort) {
-        this.typeSort = false;
-      // Compare strings
+      if(this.typeSort !== 1) {
+        // Compare strings
         this.filteredList.sort((a, b) => ('' + b.pokemon).localeCompare(a.pokemon));
       } else {
-        this.typeSort = true;
-      // Compare strings
+        // Compare strings
         this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
       }
+        this.typeSort = -this.typeSort;
     },
     sortAtk() {
+      this.sortType = 'atk';
       // Using atkSort helps toggle the order (a-z || z-a)
-      if(this.atkSort) {
-        this.atkSort = false;
+      if(this.atkSort !== 1) {
         this.filteredList.sort((a, b) => b.attack - a.attack);
       } else {
-        this.atkSort = true;
         this.filteredList.sort((a, b) => a.attack - b.attack);
       }
+        this.atkSort = -this.atkSort;
     },
     sortDef() {
+      this.sortType = 'def';
       // Using defSort helps toggle the order (a-z || z-a)
-      if(this.defSort) {
-        this.defSort = false;
+      if(this.defSort !== 1) {
         this.filteredList.sort((a, b) => b.defense - a.defense);
         } else {
-          this.defSort = true;
           this.filteredList.sort((a, b) => a.defense - b.defense);
         }
+          this.defSort = -this.defSort;
     },
     filterAtk(minAtk) {
+      this.filterType = 'atk';
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
       }
-      this.filteredList = this.filteredList.filter(a => a.attack > minAtk);
+      this.filteredList = this.filteredList.filter(a => a.attack >= minAtk);
     },
     filterDef(minDef) {
-      console.log('defense method', minDef);
+      this.filterType = 'def';
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
       }
-      this.filteredList = this.filteredList.filter(a => a.defense > minDef);
+      this.filteredList = this.filteredList.filter(a => a.defense >= minDef);
     }
   },
   computed: {

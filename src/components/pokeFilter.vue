@@ -15,13 +15,7 @@
 
 <script>
 export default {
-    props: ['pokeList'],
-    data() {
-        return {
-            // minatk: '',
-            // mindef: ''
-        }
-    }
+    props: ['pokeList']
 }
 </script>
 
@@ -43,12 +37,10 @@ li {
     border-left: 1px solid gray;
     border-radius: 3px;
     box-shadow: 1px 1px 1px black;
-    background-color: aqua;
     list-style: none;
 }
 
 li:hover {
     cursor: pointer;
-    background-color: aquamarine;
 }
 </style>
