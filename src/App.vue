@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import pokemon from '../pokemon.js';
+
 import Header from './components/Header.vue';
 import Results from './components/Results.vue';
 
@@ -51,7 +51,7 @@ main {
 
 .header {
   display: flex;
-  
+
   background: lightsteelblue;
   width: 90%;
  
@@ -60,6 +60,8 @@ main {
 .results {
   background: lightsalmon;
   width: 90%;
+  overflow-y: auto;
+  height: 700px;
 
 }
 h1 {
