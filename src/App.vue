@@ -41,7 +41,7 @@ export default {
           return (this.pokeList)
           && (pokemon.hp === '' || pokemon.hp >= this.filter.hp);
         }
-        return (pokemon.type_1 === '' || pokemon.type_1 === this.filter.type)
+        return (pokemon.type_1 === '' || pokemon.type_1 === this.filter.type.toLowerCase())
         && (pokemon.hp === '' || pokemon.hp >= this.filter.hp)
       });
     },
