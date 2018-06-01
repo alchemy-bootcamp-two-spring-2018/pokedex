@@ -1,6 +1,8 @@
 <template>
   <div class="filter-box">
-    <h2>Filter</h2>
+    <h2>Filter By Element</h2>
+    <p>Please Enter an Element</p>
+    <p>EX: Water, Fire, Earth</p>
       <input v-model="filter.type">
   </div>
 </template>
