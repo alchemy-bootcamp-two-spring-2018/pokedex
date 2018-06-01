@@ -3,12 +3,12 @@
     <h1>Poke Dex</h1>
     <section id="header-filter">
       <Header
-        v-bind:filter="filter"
+        v-bind:filter="chosenFilter"
         
       />
     </section>
     <section id="pokemon-display">
-      <Results v-bind:list= "list"
+      <Results v-bind:list= "pocketMonsters"
       />
     </section>
   </div>
@@ -24,7 +24,7 @@ export default {
   data(){
     return {
       list: pokeDex,
-      filter: {
+      chosenFilter: {
         type: '',
       }
     }
@@ -33,9 +33,21 @@ export default {
     Results,
     Header
   },
-  methods: {
-  
+
+  computed: {
+    pocketMonsters() {
+      let filteredPokemon = [];
+      console.log(this.chosenFilter.type)
+      for (let i in this.list) {
+        if(this.list[i].type_1 === this.chosenFilter.type) {
+          filteredPokemon.push(this.list[i])
+        }
+      }
+      console.log(filteredPokemon)
+      return filteredPokemon
+    }
   }
+
 }
 </script>
 
