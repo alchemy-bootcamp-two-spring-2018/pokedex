@@ -2,13 +2,13 @@
   <div id="app">
 
     <section>
-      <Header />
+      <Header :filter="filter"/>
     </section>
 
     <section>
-      <Results />
+      <Results :pokemonList="list"/>
       
-        </section>
+    </section>
 
   </div>
 </template>
@@ -20,16 +20,23 @@ import Results from './components/Results.vue';
 import Pokemon from '../pokemon.js';
 
 export default {
-  data (){
+  data() {
     return {
-      list: Pokemon
-    }
+      list: Pokemon,
+
+      filter: { type: ''},
+    };
   },
+
   components: {
     Header,
     Results
   }
-}
+
+};
+
+
+
 </script>
 
 <style>

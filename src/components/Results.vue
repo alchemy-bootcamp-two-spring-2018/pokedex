@@ -1,8 +1,12 @@
 <template>
   <div>
     <h1> If this is displaying, Results is loading</h1>
-    {{list.length}}
     
+    <Tile 
+      v-for="pokemonEach in pokemonList"
+      :key="pokemonEach.id"
+      :pokemon="pokemonEach"
+    />
   </div>
 </template>
 
@@ -11,8 +15,13 @@
 
 
 export default {
-  
-};
+
+  components: {
+    Tile
+  },
+
+  props: ['pokemonList']
+}
 
 </script>
 
