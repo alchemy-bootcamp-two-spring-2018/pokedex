@@ -4,10 +4,13 @@
       <HeaderArea 
         :pokemonType="pokemonList"
          :filter="filter"
+         :sort="sort"
       />
     </section>
     <section class="results">
-      <ResultsViewer :pokemonList="filterPokemon"/>
+      <ResultsViewer 
+      :pokemonList="filterPokemon"/>
+    
     </section>
   </div>
 </template>
