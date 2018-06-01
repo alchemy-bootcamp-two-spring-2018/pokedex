@@ -6,7 +6,7 @@
     </section>
 
     <section>
-      <Results :pokemonList="pokeType" :filter="filter.type"/>   
+      <Results :pokemonList="filtered" :filter="filter.type"/>   
     </section>
 
   </div>
@@ -33,15 +33,16 @@ export default {
   },
 
   computed: {
-    pokeType() {
-      if(!this.filter.type) return [];
-      return this.pokeList.filter(pokemon => pokemon.type_1 === this.filter.type);
+    filtered() {
+      return this.pokeList.filter(pokemon => {
+        if(this.filter.type === 'All') {
+          return (this.pokeList)
+          && (pokemon.hp === '' || pokemon.hp >= this.filter.hp);
+        }
+        return (pokemon.type_1 === '' || pokemon.type_1 === this.filter.type)
+        && (pokemon.hp === '' || pokemon.hp >= this.filter.hp)
+      });
     },
-
-    pokeHP() {
-      if(!this.filter.hp) return [];
-      return this.pokeList.filter(pokemon => pokemon.hp >= this.filter.hp);
-    }
   },
 
   components: {
