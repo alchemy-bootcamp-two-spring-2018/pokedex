@@ -4,6 +4,7 @@
       {{pokemon.pokemon}}
     </h3>
     <img :src="pokemon.url_image">
+    <p>{{pokemon.defense}}</p>
   </div> 
 </template>
 
