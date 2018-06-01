@@ -1,7 +1,7 @@
 <template>
   <div>
     <select v-model="filter.type" class="pokemon-type">
-      <option value="all">Select Type</option>
+      <option value="all">All</option>
       <option value="water">Water</option>
       <option value="electric">Electric</option>
       <option value="ice">Ice</option>
@@ -19,7 +19,7 @@
       <option value="flying">flying</option>
       <option value="grass">grass</option>
     </select>
-      <input v-model="filter.pokemon">
+      <input v-model="filter.pokemon" type="numbers">
   </div>
 </template>
 <script>
