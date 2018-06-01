@@ -2,8 +2,8 @@
   <div>
     <h1>This is a Header</h1>
     <section class="filter">
-      <input type="checkbox" value="type">Type</input>
-      <input type="checkbox" value="HP">HP</input>
+      <pokemonFilter />
+     
     </section>
 
     <section class="sort">
@@ -18,14 +18,17 @@
 
 <script>
 
-import Filter from './Filter.vue'
+import pokemonFilter from './Filter.vue'
 import Sort from './Sort.vue'
 
 export default {
   props: [
-    'Filter',
-    'Sort'
-  ]
+    'filter',
+    'sort'
+  ],
+  components: {
+    pokemonFilter
+  }
 };
 
 </script>
