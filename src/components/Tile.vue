@@ -3,7 +3,7 @@
     <section class="cards" v-if="pokemonProp">
       <span
       class="tile"
-      v-for="pokemon in getFiltered"
+      v-for="pokemon in sortedByName"
       v-bind:key="pokemon.id"
       >
           <h2>{{pokemon.pokemon}}</h2>
@@ -21,7 +21,7 @@
 <script>
 
 export default {
-  props: ['pokemonProp', 'getFiltered']
+  props: ['pokemonProp', 'getFiltered', 'sortedByName']
 };
 
 </script>
