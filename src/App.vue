@@ -2,7 +2,7 @@
   <div id="app">
     App area
     <section class="header">
-      <HeaderArea/>
+      <HeaderArea :pokemonType="pokemonList"/>
     </section>
     <section class="results">
       <ResultsViewer :pokemonList="pokemonList"/>
