@@ -14,7 +14,6 @@
         />
       </section>
     </main>
-    
   </div>
 </template>
 
