@@ -4,6 +4,7 @@
     <section id="header-filter">
       <Header
         v-bind:filter="filter"
+        
       />
     </section>
     <section id="pokemon-display">
@@ -33,13 +34,7 @@ export default {
     Header
   },
   methods: {
-    updatePokedex() {
-
-      // for (let i = 0; i < pokeDex.length; i++) {
-
-      // }
-      this.list = pokeDex;
-    }
+  
   }
 }
 </script>

@@ -2,7 +2,6 @@
     <div>
       <pokeFilter
       v-bind:filter="filter"
-      @change="updatePokedex"
       />
     
     </div>
@@ -14,7 +13,7 @@ import pokeFilter from './pokeFilter.vue'
 export default {
 
     props: {
-        filter: String,
+        filter: Object,
     },
 
     components: {
