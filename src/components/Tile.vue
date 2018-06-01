@@ -5,7 +5,6 @@
       <p class = "name"> {{ pokemon.pokemon }} </p>
       <p> HP: {{pokemon.hp}} </p>
       <p> Type: {{pokemon.type_1}} </p>
-      
     </div>
   </div>
 </template>
