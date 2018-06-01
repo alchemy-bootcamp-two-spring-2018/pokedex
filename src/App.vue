@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Manipulate your poke search!</h1>
-    <button @click="displayAll">-o-</button>
+    <img src="./assets/ball.png" @click="displayAll">
     <div id="app-main">
       <poke-header id="header"
         :pokeList="remDupes"
@@ -10,22 +10,21 @@
         @type="sortType"
         @atk="sortAtk"
       />
-        <!-- @def="sortDef"
-        @minatk="filterAtk($event)"
-        @mindef="filterDef($event)" -->
       <div id="atk-def">
+        <label>
         Min-Atk:
         <input
             type="number"
             v-model.number="minatk"
             @change="filterAtk(minatk)"
-        />
+        /></label>
+        <label>
         Min-Def: 
         <input
             type="number"
             v-model.number="mindef"
             @change="filterDef(mindef)"
-        />
+        /></label>
       </div>
       <poke-results id="results"
         :banana="filteredList"
@@ -50,23 +49,27 @@ export default {
       typeSort: 1,
       atkSort: 1,
       defSort: 1,
-      filterType: '',
-      sortType: '',
+      filterStyle: '',
+      sortStyle: '',
       minatk: 0,
       mindef: 0
     }
   },
+
+  // COMPONENTS
   components: {
     PokeHeader,
     PokeResults
   },
+
+  // METHODS
   methods: {
     filterTypes(pokeType) {
       this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
       // tempList used to revert back from any array mutations
       this.masterList = this.filteredList;
       // Make sure sorting options persist through type changes
-      switch(this.sortType) {
+      switch(this.sortStyle) {
         case'name':
           this.nameSort = -this.nameSort;
           this.sortName();
@@ -84,7 +87,7 @@ export default {
           this.sortDef(-this.defSort);
           break;
       }
-      switch(this.filterType) {
+      switch(this.filterStyle) {
         case('atk'):
           this.filterAtk(this.minatk);
           break;
@@ -93,11 +96,13 @@ export default {
           break;
       }
     },
+
     displayAll() {
       this.filteredList = this.pokeList;
     },
+
     sortName() {
-      this.sortType = 'name';
+      this.sortStyle = 'name';
       // Using nameSort helps toggle the order (a-z || z-a)
       if(this.nameSort !== 1) {
         // Compare strings
@@ -108,20 +113,22 @@ export default {
       }
         this.nameSort = -this.nameSort;
     },
+
     sortType() {
-      this.sortType = 'type';
+      this.sortStyle = 'type';
       // Using typeSort helps toggle the order (a-z || z-a)
       if(this.typeSort !== 1) {
         // Compare strings
-        this.filteredList.sort((a, b) => ('' + b.pokemon).localeCompare(a.pokemon));
+        this.filteredList.sort((a, b) => ('' + b.type_1).localeCompare(a.type_1));
       } else {
         // Compare strings
-        this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+        this.filteredList.sort((a, b) => ('' + a.type_1).localeCompare(b.type_1));
       }
         this.typeSort = -this.typeSort;
     },
+
     sortAtk() {
-      this.sortType = 'atk';
+      this.sortStyle = 'atk';
       // Using atkSort helps toggle the order (a-z || z-a)
       if(this.atkSort !== 1) {
         this.filteredList.sort((a, b) => b.attack - a.attack);
@@ -130,8 +137,9 @@ export default {
       }
         this.atkSort = -this.atkSort;
     },
+
     sortDef() {
-      this.sortType = 'def';
+      this.sortStyle = 'def';
       // Using defSort helps toggle the order (a-z || z-a)
       if(this.defSort !== 1) {
         this.filteredList.sort((a, b) => b.defense - a.defense);
@@ -140,16 +148,18 @@ export default {
         }
           this.defSort = -this.defSort;
     },
+
     filterAtk(minAtk) {
-      this.filterType = 'atk';
+      this.filterStyle = 'atk';
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
       }
       this.filteredList = this.filteredList.filter(a => a.attack >= minAtk);
     },
+
     filterDef(minDef) {
-      this.filterType = 'def';
+      this.filterStyle = 'def';
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
@@ -157,6 +167,8 @@ export default {
       this.filteredList = this.filteredList.filter(a => a.defense >= minDef);
     }
   },
+
+  // COMPUTED
   computed: {
     remDupes() {
       return this.pokeList.filter((obj, pos, arr) => {
@@ -168,9 +180,32 @@ export default {
 </script>
 
 <style scoped>
+@keyframes ball-zoom {
+  from {
+    transform: scale(1);
+  } to {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes ball-unzoom {
+  from {
+    transform: scale(1.5);
+  } to {
+    transform: scale(1);
+  }
+}
+
+
 #app {
   display: flex;
   flex-direction: column;
+  border-top: 3px solid gray;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid gray;
+  background-color: bisque;
+  width: fit-content;
 }
 #app-main {
   display: flex;
@@ -184,15 +219,27 @@ h1 {
   text-align: center;
 }
 
-button {
+img {
   align-self: center;
-  font-size: 3rem;
   cursor: pointer;
-  background: radial-gradient(red, white);
-  color: black;
-  border-radius: 100%;
-  width: fit-content;
+  animation: ball-unzoom 500ms forwards;
 }
 
+img:hover {
+  animation: ball-zoom 1s forwards;
+}
+
+#atk-def {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px;
+  background: black;
+  color: white;
+  /* border: 1px solid red; */
+}
+
+#results {
+  padding: 13px;
+}
 
 </style>
