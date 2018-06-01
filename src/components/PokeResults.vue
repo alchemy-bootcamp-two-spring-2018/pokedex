@@ -16,9 +16,5 @@ export default {
 }
 </script>
 
-<style>
-img {
-    height: 50px;
-    width: 50px;
-}
+<style scoped>
 </style>
