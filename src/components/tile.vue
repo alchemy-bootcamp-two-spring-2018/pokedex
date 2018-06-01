@@ -16,9 +16,6 @@
 export default {
   props: {
     pokeTiles: Array,
-    name: String,
-    type: String,
-    img: String
   }
 }
 </script>

@@ -8,8 +8,9 @@
       />
     </section>
     <section id="pokemon-display">
-      <Results v-bind:list= "pocketMonsters"
+      <Results v-bind:list="pocketMonsters"
       />
+      <p>Get started by typing in your favorite Pokemon type (Water, Fire, Electric, Ground, etc).</p>
     </section>
   </div>
 </template>
@@ -37,13 +38,11 @@ export default {
   computed: {
     pocketMonsters() {
       let filteredPokemon = [];
-      console.log(this.chosenFilter.type)
       for (let i in this.list) {
         if(this.list[i].type_1 === this.chosenFilter.type) {
           filteredPokemon.push(this.list[i])
         }
       }
-      console.log(filteredPokemon)
       return filteredPokemon
     }
   }
@@ -59,6 +58,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+p {
+  color:#25394d91;
+  font-size: .8em;
 }
 
 </style>
