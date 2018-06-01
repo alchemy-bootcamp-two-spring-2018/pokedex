@@ -2,7 +2,9 @@
   <div>
     <section class="tile-display">
       <Tile
-        :tiles="list"
+        v-for="pokemon in sortedList"
+        :key="pokemon.id"
+        :tiles="pokemon"
       />
     </section>
   </div>
@@ -17,9 +19,7 @@ export default {
     Tile
   },
 
-  props: {
-    list: Array,
-  }
+  props: ['sortedList']
 };
 </script>
 

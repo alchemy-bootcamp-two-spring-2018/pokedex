@@ -5,16 +5,17 @@
       <section class="header">
         <Header
           :pokeFilter="chosenFilter"
+          :chosenSort="chosenSort"
         />
         <!-- using v-bind, pass down the variable 'filter', which I just assign here as "chosenFilter" -->
       </section>
       <section class="results">
         <Results
           :list="filtered"
+          :sortedList="sorted"
         />
       </section>
     </main>
-    
   </div>
 </template>
 
@@ -30,30 +31,28 @@ export default {
       chosenFilter: {
         type: '',
         attack: '',
+      },
+      chosenSort: {
+        prop: ''
       }
     };
   },
 
   computed: {
-    // filteredType() {
-    //   let filteredPokemon = [];
-    //   for(let i in this.list) {
-    //     if(this.list[i].type_1 === this.chosenFilter.type) {
-    //       filteredPokemon.push(this.list[i]);
-    //     }
-    //   }
-    //   return filteredPokemon;
-    // },
-    // filteredAttack() {
-    //   let filteredPokemon = [];
-    //   for(let i in this.list) {
-    //     if(this.list[i].attack >= this.chosenFilter.attack) {
-    //       filteredPokemon.push(this.list[i]);
-    //     }
-    //   }
-    //   return filteredPokemon;
-    // }
-
+    // const propA = a[this.chosenSort.prop];
+    // const propB = b[this.chosenSort.prop];
+    // if(propA === propB) return 0;
+    // if(propA > propB) return 1;
+    // return -1; 
+    sorted() {
+      return this.filtered.slice().sort((a, b) => {
+        const x = a.pokemon.toLowerCase();
+        const y = b.pokemon.toLowerCase();
+        if(x < y) return -1;
+        if(x > y) return 1;
+        return 0;
+      });
+    },
     filtered() {
       return this.list.filter(pokemon => {
         

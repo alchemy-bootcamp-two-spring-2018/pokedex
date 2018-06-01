@@ -1,7 +1,9 @@
 <template>
   <div class="headerContainer">
     <section>
-      <Sort/>
+      <Sort
+      :chosenSort="chosenSort"
+      />
     </section>
     <section>
       <SearchFilter
@@ -19,6 +21,7 @@ export default {
 
   props: {
     pokeFilter: Object,
+    chosenSort: Object
   },
   components: {
     SearchFilter,
