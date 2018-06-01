@@ -2,7 +2,7 @@
   <div>
     <h1>Pokedex</h1>
     <filterArea :filter="filter"/>
-    <sortArea/>
+    <sortArea :sort="sort"/>
   </div>
 </template>
 
@@ -14,6 +14,6 @@
       filterArea,
       sortArea
     },
-    props: ['filter']
+    props: ['filter', 'sort']
   };
 </script>

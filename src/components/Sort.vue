@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Sort By</h3>
-        <select>
+        <select v-model="sort">
             <option>None</option>
             <option value="pokemon">Name(A-Z)</option>
             <option value="defense">Defense(High-Low)</option>
@@ -13,5 +13,7 @@
 <script>
     export default {
 
+
+        props: ['sort']
     }
 </script>
