@@ -4,7 +4,9 @@
       {{pokemon.pokemon}}
     </h3>
     <img :src="pokemon.url_image">
-    <p>{{pokemon.defense}}</p>
+    <p>Type 1: {{pokemon.type_1}}</p>
+    <p>Type 2: {{pokemon.type_2}}</p>
+    <p>Defense: {{pokemon.defense}}</p>
   </div> 
 </template>
 
@@ -19,12 +21,17 @@
 </script>
 <style>
   .tiles  img {
-    width: 60px;
-    height: 60px;
+    width: 85px;
+    height: 85px;
   }  
+  .tiles p {
+      font-size: 15px;
+      margin: 1px;
+  }
   .tiles {
-    width: 125px;
+    border-radius: 12px;
+    width: 200px;
+    max-height: 250px;
     margin: 2px;
-
   }
 </style>
