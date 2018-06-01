@@ -7,6 +7,9 @@
       :key="pokemonEach.id"
       :pokemon="pokemonEach"
     />
+
+    <p> Name: {{ filter }} </p>
+
   </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
     Tile
   },
 
-  props: ['pokemonList']
+  props: ['pokemonList', 'filter']
 }
 
 </script>

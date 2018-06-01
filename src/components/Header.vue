@@ -2,15 +2,12 @@
   <div>
     <h1>This is a Header</h1>
     <section class="filter">
-      <pokemonFilter />
+      <pokemonFilter :filterSelection="filter"/>
      
     </section>
 
     <section class="sort">
-      <select>
-        <option value="Name">Name</option>
-        <option value="Type">Type</option>
-      </select>
+      <Sort />
     </section>
     
   </div>
@@ -22,12 +19,11 @@ import pokemonFilter from './Filter.vue'
 import Sort from './Sort.vue'
 
 export default {
-  props: [
-    'filter',
-    'sort'
-  ],
+  props: ['filter', 'sort'],
+
   components: {
-    pokemonFilter
+    pokemonFilter,
+    Sort
   }
 };
 

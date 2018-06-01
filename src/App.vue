@@ -2,12 +2,11 @@
   <div id="app">
 
     <section>
-      <Header :filter="filter"/>
+      <Header :filter="filter" :sort="sort"/>
     </section>
 
     <section>
-      <Results :pokemonList="list"/>
-      
+      <Results :pokemonList="list" :filter="filter.type"/>   
     </section>
 
   </div>
@@ -25,6 +24,8 @@ export default {
       list: Pokemon,
 
       filter: { type: ''},
+
+      sort: { name: ''}
     };
   },
 
@@ -32,10 +33,7 @@ export default {
     Header,
     Results
   }
-
 };
-
-
 
 </script>
 
