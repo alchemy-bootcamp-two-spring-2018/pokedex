@@ -3,7 +3,7 @@
     <ul>
       <li
         class="listItems"
-        v-for="pokemon in list"
+        v-for="pokemon in tiles"
         :key="pokemon.id"
       >
         <div class="card">
@@ -24,15 +24,11 @@
 </template>
 
 <script>
-import pokemon from '../../pokemon.js';
-
 export default {
-  data() {
-    return {
-      list: pokemon
-    }
+  props: {
+    tiles: Array,
   }
-}
+};
 </script>
 
 <style>
@@ -40,7 +36,7 @@ export default {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0;
 }
 
@@ -54,6 +50,13 @@ p {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   margin: 10px;
+  background-color: lightsalmon;
+  width: 150px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -65,6 +68,4 @@ p {
 .container {
   padding: 2px 16px;
 }
-
-
 </style>

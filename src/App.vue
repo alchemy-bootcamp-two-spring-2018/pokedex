@@ -4,12 +4,13 @@
     <main>
       <section class="header">
         <Header
-
+          :filter="chosenFilter"
         />
+        <!-- using v-bind, pass down the variable filter, which I just assign here as "chosenFilter" -->
       </section>
       <section class="results">
         <Results
-          
+          :list="pocketMonsters"
         />
       </section>
     </main>
@@ -18,11 +19,31 @@
 </template>
 
 <script>
-
+import pokemon from '../pokemon.js';
 import Header from './components/Header.vue';
 import Results from './components/Results.vue';
 
 export default {
+  data() {
+    return {
+      list: pokemon,
+      chosenFilter: {
+        type: '',
+      }
+    };
+  },
+
+  computed: {
+    pocketMonsters() {
+      let filteredPokemon = [];
+      for(let i in this.list) {
+        if(this.list[i].type_1 === this.chosenFilter.type) {
+          filteredPokemon.push(this.list[i]);
+        }
+      }
+      return filteredPokemon;
+    }
+  },
 
   components: {
     Header,
@@ -58,7 +79,7 @@ main {
 }
 
 .results {
-  background: lightsalmon;
+  background: peachpuff;
   width: 90%;
   overflow-y: auto;
   height: 700px;
