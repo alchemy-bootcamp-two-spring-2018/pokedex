@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    App area
     <section class="header">
       <HeaderArea 
         :pokemonType="pokemonList"
@@ -48,6 +47,8 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
+  #app {
+    text-align: center;
+  }
 </style>
