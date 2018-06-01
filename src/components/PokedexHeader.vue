@@ -1,7 +1,9 @@
 <template>
   <span>
     <h2>This is our Pokedex HEADER component!</h2>
-    <Sort/>
+    <Sort
+    :sortedByName="sortedByName"
+    />
     <SearchFilter
     :type="type"
     :filter="filter"
@@ -14,11 +16,11 @@ import Sort from './Sort.vue';
 import SearchFilter from './SearchFilter.vue';
 
 export default {
-  props: ['type', 'filter'],
+  props: ['type', 'filter', 'sortedByName'],
   
   components: {
     Sort,
-    SearchFilter
+    SearchFilter,
   }
 };
 

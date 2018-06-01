@@ -17,15 +17,15 @@
 
 export default {
   props: ['type', 'filter'],
-  
+
   methods: {
-  getTitleCase(str) {
-    return str.toLowerCase().split(' ').map(function(word) {
-      return (word.charAt(0).toUpperCase() + word.slice(1));
-    }).join(' ');
+    getTitleCase(str) {
+      return str.toLowerCase().split(' ').map(function(word) {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
+      }).join(' ');
     }
   }
-  
+
 };
 
 </script>
