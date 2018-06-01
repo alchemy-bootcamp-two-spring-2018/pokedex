@@ -1,18 +1,24 @@
 <template>
   <div class="pokeTile">
       <span>Filter by Type</span>
-      <input>
+      <input v-model="filter.type">
   </div>
 </template>
 
 <script>
 import pokeDex from '../pokemon.js'
 export default {
-  
-  props: {
+
+  data() {
+    return {
+      list: pokeDex
+    }
+  },
+
+  props: ['filter'],
 
   }
-}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

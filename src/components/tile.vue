@@ -1,7 +1,7 @@
 <template>
   <div class="pokeTile">
     <div
-    v-for = 'pokeDex in list'
+    v-for = 'pokeDex in pokeTiles'
     v-bind:key = 'pokeDex.id'
     class="containerTile"> 
       <span>{{pokeDex.pokemon}}</span>
@@ -12,14 +12,10 @@
 </template>
 
 <script>
-import pokeDex from '../pokemon.js'
+
 export default {
-  data() {
-    return {
-      list: pokeDex
-    }
-  },
   props: {
+    pokeTiles: Array,
     name: String,
     type: String,
     img: String
