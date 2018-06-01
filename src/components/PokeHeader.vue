@@ -1,15 +1,13 @@
 <template>
-    <div id="main">
-        <h1>Manipulate your poke search!</h1>
-        <button @click="$emit('all')">ALL</button>
-        <div id="container">
+    <div id="header-main">
+        <div id="header-container">
             <!-- This is the arbitrary name we gave to our component on line ? -->
-            <pokeFilter id="filter"
+            <pokeFilter id="header-filter"
                 :pokeList="pokeList"
                 @change="$emit('change', $event)"
             />
             <!-- This is the arbitrary name we gave to our component on line ? -->
-            <pokeSort id="sort"
+            <pokeSort id="header-sort"
                 @name="$emit('name')"
                 @type="$emit('type')"
                 @atk="$emit('atk')"
@@ -37,23 +35,30 @@ export default {
 }
 </script>
 
-<style>
-#container {
+<style scoped>
+#header-main {
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: row;
-
 }
 
-#filter {
-    padding: 6px;
-    text-align: left;
-    width: 123px;
-    background-color: gray;
+#header-container {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
 }
 
-#sort {
+#header-filter {
     padding: 6px;
     text-align: left;
-    width: 69px;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+#header-sort {
+    padding: 6px;
+    text-align: left;
+    /* border: 1px solid red; */
 }
 </style>
