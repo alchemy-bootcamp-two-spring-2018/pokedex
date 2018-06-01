@@ -6,7 +6,7 @@
     </section>
 
     <section>
-      <Results :pokemonList="pokeList" :filter="filter.type"/>   
+      <Results :pokemonList="pokeType" :filter="filter.type"/>   
     </section>
 
   </div>
@@ -23,10 +23,18 @@ export default {
     return {
       pokeList: pokemon,
 
-      filter: { type: ''},
+      filter: {type: ''},
 
-      sort: { name: ''}
+      sort: {name: ''}
     };
+  },
+
+  computed: {
+    pokeType() {
+      if(!this.filter.type) return [];
+      return this.pokeList.filter(pokemon => pokemon.type_1 === this.filter.type);
+
+    }
   },
 
   components: {

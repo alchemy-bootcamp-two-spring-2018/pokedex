@@ -1,14 +1,19 @@
 <template>
   <div>
     <h1>This is a Filter</h1>
-    <input v-model="filterSelection.type">
+   
+    <select v-model="filterSelection.type">
+      <option disabled value="">Select type</option>
+      <option>grass</option>
+      <option>fire</option>
+      <option>water</option>
+      <option>bug</option>
+    </select>
+    <!-- <span>Select Type: {{ filterSelection.type }}</span> -->
   </div>
 </template>
 
 <script>
-
-
-
 
 export default {
   props: [
