@@ -4,6 +4,7 @@
     <Tile
     :pokemonProp="pokemonProp"
     :getFiltered="getFiltered"
+    :sortedByName="sortedByName"
     />
 
   </span>
@@ -14,7 +15,7 @@ import Tile from './Tile.vue';
 
 export default {
 
-  props: ['pokemonProp', 'getFiltered'],
+  props: ['pokemonProp', 'getFiltered', 'sortedByName'],
 
   components: {
     Tile
