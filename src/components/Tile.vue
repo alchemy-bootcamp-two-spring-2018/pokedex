@@ -1,8 +1,7 @@
 <template>
   <span>
     <section class="cards" v-if="pokemonProp">
-      <ul>
-      <li
+      <span
       class="tile"
       v-for="pokemon in pokemonProp"
       v-bind:key="pokemon.id"
@@ -12,8 +11,7 @@
             <p>Type 1: {{pokemon.type_1}}</p>
             <p>Attack: {{pokemon.attack}}</p>
             <p>Defense: {{pokemon.defense}}</p>
-      </li>
-      </ul>
+      </span>
     </section>
     <p v-else>Select a pokemon to learn more!</p>
   </span>
@@ -31,7 +29,13 @@ export default {
 <style scoped>
 
 h2 {
+  font-size: 18px;
   margin: 0px;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .tile {
@@ -44,6 +48,7 @@ h2 {
   text-transform: capitalize;
   padding: 15px;
   margin: 5px;
+  border-radius: 20px;
 }
 
 .tile p {

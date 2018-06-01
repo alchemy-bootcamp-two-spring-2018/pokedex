@@ -1,6 +1,6 @@
 <template>
   <span>
-    <h3>This is our Pokedex FILTER!</h3>
+    <h3>This is our Pokedex FILTER component!</h3>
 
   </span>
 </template>

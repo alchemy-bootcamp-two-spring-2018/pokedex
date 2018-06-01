@@ -1,6 +1,6 @@
 <template>
   <span>
-    <h2>This is our Pokedex RESULTS!</h2>
+    <h2>This is our Pokedex RESULTS component!</h2>
     <Tile :pokemonProp="pokemonProp"/>
 
   </span>
