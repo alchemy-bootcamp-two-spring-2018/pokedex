@@ -23,7 +23,11 @@
 
 <style>
 .tile-area {
-  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  height: 600px;
   overflow: auto;
 }
 </style>
