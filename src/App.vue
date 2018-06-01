@@ -8,6 +8,7 @@
       :type="type"
       :filter="filter"
       :sortedByName="sortedByName"
+      :sortedByType="sortedByType"
       />
     </section>
 
@@ -16,6 +17,7 @@
       :pokemonProp="pokemonList"
       :getFiltered="getFiltered"
       :sortedByName="sortedByName"
+      :sortedByType="sortedByType"
       />
     </section>
 
@@ -88,6 +90,16 @@ export default {
         const y = b.pokemon.toLowerCase();
         if(x < y) {return -1;}
         if(x > y) {return 1;}
+        return 0;
+      });
+    },
+
+    sortedByType() {
+      return this.getFiltered.slice().sort((a, b) => {
+        const x = a.type_1.toLowerCase();
+        const y = b.type_1.toLowerCase();
+        if(x < y) {return -1;}
+        if (x > y) {return 1;}
         return 0;
       });
     }

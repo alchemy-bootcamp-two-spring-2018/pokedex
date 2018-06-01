@@ -3,10 +3,10 @@
     <section class="cards" v-if="pokemonProp">
       <span
       class="tile"
-      v-for="pokemon in sortedByName"
+      v-for="pokemon in sortedByType"
       v-bind:key="pokemon.id"
       >
-          <h2>{{pokemon.pokemon}}</h2>
+          <h2 v-bind:style="{ 'color': pokemon.color_1 }">{{pokemon.pokemon}}</h2>
           <img v-bind:src="pokemon.url_image">
             <p>Type 1: {{pokemon.type_1}}</p>
             <p>Type 2: {{pokemon.type_2}}</p>
@@ -21,7 +21,7 @@
 <script>
 
 export default {
-  props: ['pokemonProp', 'getFiltered', 'sortedByName']
+  props: ['pokemonProp', 'getFiltered', 'sortedByName', 'sortedByType']
 };
 
 </script>
@@ -46,6 +46,7 @@ h2 {
   width: 174px;
   height: fit-content;
   border: 2px solid black;
+  background-color: rgb(249, 244, 244);
   text-transform: capitalize;
   padding: 15px;
   margin: 5px;

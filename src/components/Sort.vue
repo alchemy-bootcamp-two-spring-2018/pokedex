@@ -3,7 +3,7 @@
     <h3>This is our Pokedex SORT component!</h3>
     <ul>
       <li>Name</li>
-      <li>Type</li>
+      <li>Type 1</li>
       <li>Attack</li>
       <li>Defense</li>
 
@@ -15,7 +15,7 @@
 
 export default {
 
-  props: ['sortedByName']
+  props: ['sortedByName', 'sortedByType']
 
 };
 
