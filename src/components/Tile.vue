@@ -1,22 +1,17 @@
 <template>
   <div>
     <ul>
-      <li
-        class="listItems"
-        v-for="pokemon in tiles"
-        :key="pokemon.id"
-      >
+      <li class="listItems">
         <div class="card">
-          <img :src="pokemon.url_image" alt="Pokemon image" style="width:75px">
+          <img :src="tiles.url_image" alt="Pokemon image" style="width:75px">
           <div class="container">
-            <h4><b>{{pokemon.pokemon.charAt(0).toUpperCase() + pokemon.pokemon.slice(1)}}</b></h4>
-            <p>Type: {{pokemon.type_1.toUpperCase()}}</p>
-            <p>HP: {{pokemon.hp}}</p>
-            <p>Attack: {{pokemon.attack}}</p>
-            <p>Defense: {{pokemon.defense}}</p>
+            <h4><b>{{tiles.pokemon.charAt(0).toUpperCase() + tiles.pokemon.slice(1)}}</b></h4>
+            <p>Type: {{tiles.type_1.toUpperCase()}}</p>
+            <p>HP: {{tiles.hp}}</p>
+            <p>Attack: {{tiles.attack}}</p>
+            <p>Defense: {{tiles.defense}}</p>
           </div>
         </div>
-
       </li>
     </ul>
   </div>
@@ -25,9 +20,7 @@
 
 <script>
 export default {
-  props: {
-    tiles: Array,
-  }
+  props: ['tiles']
 };
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <div class="filter-box">
     <h2>Filter</h2>
+      <label>Type: </label>
       <select name="" id="" v-model="filter.type">
         <option value="grass">Grass</option>
         <option value="fire">Fire</option>
