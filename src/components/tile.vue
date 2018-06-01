@@ -16,9 +16,6 @@
 export default {
   props: {
     pokeTiles: Array,
-    name: String,
-    type: String,
-    img: String
   }
 }
 </script>
@@ -40,10 +37,14 @@ a {
   color: #42b983;
 }
 
-#containerTile {
-  display: flex;
-  width: 100px;
-  background-color: gray;
+.containerTile {
+  display: inline-block;
+  background-color: rgb(245, 245, 245);
+  margin: 5px;
+}
+
+.containerTile:hover{
+  background-color: rgb(211, 211, 211);
 }
 span {
   display: block;
