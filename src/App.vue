@@ -36,7 +36,10 @@ export default {
       let filteredPokemon = [];
       console.log(this.filter.type);
       for(let i in this.pokemonList) {
-        if(this.pokemonList[i].type_1 === this.filter.type){
+        if(this.filter.type === 'all') {
+          filteredPokemon.push(this.pokemonList[i]);
+        }
+        else if(this.pokemonList[i].type_1 === this.filter.type){
           filteredPokemon.push(this.pokemonList[i]);
         }
       }
