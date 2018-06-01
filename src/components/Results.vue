@@ -1,19 +1,19 @@
 <template>
-  <div class="pokeTile">
-      <span>Filter by Type</span>
-      <input 
-      v-model="filter.type"
-      @change="$emit('change')"
-      >
+  <div>
+    <tile 
+    v-bind:pokeTiles= "list"
+    />
   </div>
 </template>
 
 <script>
+import tile from './tile.vue'
 
 export default {
 
-  props: ['filter'],
-
+    components: {
+        tile,
+    }
   }
 
 </script>

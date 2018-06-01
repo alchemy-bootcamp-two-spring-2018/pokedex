@@ -5,18 +5,17 @@
     </section>
       <pokeFilter
       v-bind:filter="filter"
+      @change="updatePokedex"
       />
     <section id="pokemon-display">
-      <tile 
-        v-bind:pokeTiles= "list"
-      />
+      <Results/>
     </section>
   </div>
 </template>
 
 <script>
 import pokeDex from './pokemon.js'
-import tile from './components/tile.vue'
+import Results from './components/Results.vue'
 import pokeFilter from './components/pokeFilter.vue'
 
 export default {
@@ -30,8 +29,17 @@ export default {
     }
   },
   components: {
-    tile,
+    Results,
     pokeFilter
+  },
+  methods: {
+    updatePokedex() {
+
+      // for (let i = 0; i < pokeDex.length; i++) {
+
+      // }
+      this.list = pokeDex;
+    }
   }
 }
 </script>
