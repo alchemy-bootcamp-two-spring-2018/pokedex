@@ -4,11 +4,11 @@
     <section id="header-filter">
       <Header
         v-bind:filter="chosenFilter"
-        v-bind:nameSort="sortByName"
+        
       />
     </section>
     <section id="pokemon-display">
-      <Results v-bind:list="pocketMonsters"
+      <Results v-bind:list="sorted"
       />
       <p>Get started by typing in your favorite Pokemon type (Water, Fire, Electric, Ground, etc).</p>
     </section>
@@ -40,6 +40,21 @@ export default {
 //are PROPERTIES, so they are automatically working, they can have their information passed down to
 //lower components
   computed: {
+    sorted() {
+      return this.pocketMonsters.slice().sort((a, b) => { 
+        let nameA = a.pokemon;
+        let nameB = b.pokemon;
+        if(nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+
+      });
+    },
     //refactor this to use the filter array method
     pocketMonsters() {
       return this.list.filter(pokemon => {
@@ -49,10 +64,23 @@ export default {
   },
 
   methods: {
-    sortByName() {
-      console.log('sortingIsWorking', this.pocketMonsters)
-      this.pocketMonsters.sort();
-    }
+    // sortByName() {
+    //   this.pocketMonsters.sort((a,b) => {
+    //     let nameA = a.pokemon;
+    //     let nameB = b.pokemon;
+    //     if(nameA < nameB) {
+    //       return -1;
+    //     }
+    //     if (nameA > nameB) {
+    //       return 1;
+    //     }
+
+    //     return 0;
+
+    //   });
+    //   console.log(this.pocketMonsters)
+    //   return this.pocketMonsters;
+    // }
   }
 
 }
