@@ -15,6 +15,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+#sort, ul, li {
+    padding: 0;
+    margin: 0;
+}
 
+li {
+    flex-wrap: wrap;
+    padding: 6px;
+    border-top: 1px solid gray;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid gray;
+    background-color: aqua;
+    list-style: none;
+}
+
+li:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+}
 </style>

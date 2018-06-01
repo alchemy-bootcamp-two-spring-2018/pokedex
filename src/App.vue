@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <poke-header 
-      :pokeList="remDupes"
-      @change="filterTypes"
-      @name="sortName"
-      @type="sortType"
-      @all="displayAll"
-    />
-    <poke-results
-      :banana="filteredList"
-    />
+    <h1>Manipulate your poke search!</h1>
+    <button @click="displayAll">-o-</button>
+    <div id="app-main">
+      <poke-header id="header"
+        :pokeList="remDupes"
+        @change="filterTypes"
+        @name="sortName"
+        @type="sortType"
+        @atk="sortAtk"
+        @def="sortDef"
+        @minatk="filterAtk"
+        @mindef="filterDef"
+      />
+      <poke-results id="results"
+        :banana="filteredList"
+      />
+    </div>
   </div>
 </template>
 
@@ -23,7 +30,11 @@ export default {
   data() {
     return {
       pokeList: pokeList,
-      filteredList: ''
+      filteredList: '',
+      atkSort: false,
+      defSort: false,
+      nameSort: false,
+      typeSort: false
     }
   },
   components: {
@@ -38,12 +49,56 @@ export default {
       this.filteredList = this.pokeList;
     },
     sortName() {
+      // Using nameSort helps toggle the order (a-z || z-a)
+      if(this.nameSort) {
+        this.nameSort = false;
       // Compare strings
-      this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+        this.filteredList.sort((a, b) => ('' + b.pokemon).localeCompare(a.pokemon));
+      } else {
+        this.nameSort = true;
+      // Compare strings
+        this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+      }
     },
     sortType() {
+      // Using typeSort helps toggle the order (a-z || z-a)
+      if(this.typeSort) {
+        this.typeSort = false;
       // Compare strings
-      this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+        this.filteredList.sort((a, b) => ('' + b.pokemon).localeCompare(a.pokemon));
+      } else {
+        this.typeSort = true;
+      // Compare strings
+        this.filteredList.sort((a, b) => ('' + a.pokemon).localeCompare(b.pokemon));
+      }
+    },
+    sortAtk() {
+      // Using atkSort helps toggle the order (a-z || z-a)
+      if(this.atkSort) {
+        this.atkSort = false;
+        this.filteredList.sort((a, b) => b.attack - a.attack);
+      } else {
+        this.atkSort = true;
+        this.filteredList.sort((a, b) => a.attack - b.attack);
+      }
+    },
+    sortDef() {
+      // Using defSort helps toggle the order (a-z || z-a)
+      if(this.defSort) {
+        this.defSort = false;
+        this.filteredList.sort((a, b) => b.defense - a.defense);
+        } else {
+          this.defSort = true;
+          this.filteredList.sort((a, b) => a.defense - b.defense);
+        }
+    },
+    filterAtk(minAtk) {
+      console.log('attack method');
+      this.filteredList.filter(a => a.attak > minAtk);
+    },
+    filterDef(minDef) {
+      console.log('defense method');
+      this.filteredList.filter(a => a.attak > minDef);
     }
   },
   computed: {
@@ -56,13 +111,32 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
 }
+#app-main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  width: 600px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  align-self: center;
+  font-size: 3rem;
+  cursor: pointer;
+  background: radial-gradient(red, white);
+  color: black;
+  border-radius: 100%;
+  width: fit-content;
+}
+
+
 </style>
