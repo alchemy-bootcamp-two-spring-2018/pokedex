@@ -24,16 +24,17 @@ export default {
 li {
     flex-wrap: wrap;
     padding: 6px;
-    border-top: 1px solid gray;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid gray;
+    border-top: 2px solid gray;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid gray;
+    margin: 1px;
     background-color: aqua;
     list-style: none;
 }
 
 li:hover {
     cursor: pointer;
-    background-color: aquamarine;
+    background-color: white;
 }
 </style>

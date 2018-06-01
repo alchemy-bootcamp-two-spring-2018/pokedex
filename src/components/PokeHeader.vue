@@ -13,8 +13,6 @@
                 @atk="$emit('atk')"
                 @def="$emit('def')"
             />
-                <!-- @minatk="$emit('minatk', $event)"
-                @mindef="$emit('mindef', $event)" -->
         </div>
     </div>
 </template>
@@ -43,26 +41,24 @@ export default {
     margin: 0;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: auto;
 }
 
 #header-container {
     display: flex;
     flex-direction: row;
-    background-color: gray;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 #header-filter {
     padding: 6px;
     text-align: left;
-    border: 1px solid red;
+    margin: auto;
+    /* border: 1px solid red; */
 }
 
 #header-sort {
     padding: 6px;
     text-align: left;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 </style>

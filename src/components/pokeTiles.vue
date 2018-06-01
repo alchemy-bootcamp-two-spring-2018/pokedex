@@ -1,6 +1,10 @@
 <template>
 <div id="tiles-main">
+    <div v-if="banana.length === 0">
+        <h1>No Pokemons to see here</h1>
+    </div>
     <div class="pokes"
+        v-else
         v-for="poke in banana"
         :key="poke.id"
         :style="{ backgroundColor: poke.color_1 }"
