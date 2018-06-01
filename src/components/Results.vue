@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h1> If this is displaying, Results is loading</h1>
+    <h1>VIEW YOUR POKEMON</h1>
     
     <Tile 
       v-for="pokemonEach in pokemonList"
       :key="pokemonEach.id"
       :pokemon="pokemonEach"
     />
+
+    <p> Name: {{ filter }} </p>
+
   </div>
 </template>
 
@@ -20,11 +23,16 @@ export default {
     Tile
   },
 
-  props: ['pokemonList']
+  props: ['pokemonList', 'filter']
 }
 
 </script>
 
-<style>
+<style scoped>
+h1 {
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2em;
+}
 
 </style>
