@@ -3,9 +3,9 @@
         <h1>Manipulate your poke search!</h1>
         <button @click="$emit('all')">ALL</button>
         <div id="filter">
-            <!-- <select>
+            <select>
                 <option v-for="pokes in pokeList" :key="pokes.id" @select="$emit('change', pokes.type_1)">{{ pokes.type_1 }}</option>
-            </select> -->
+            </select>
             <ul>
                 <li v-for="pokes in pokeList" :key="pokes.id" @click="$emit('change', pokes.type_1)">{{ pokes.type_1 }}</li>
             </ul>
@@ -33,6 +33,9 @@ import filter from './Filter.vue'
 
 export default {
     props: ['pokeList'],
+    components: {
+        filter
+    }
 }
 </script>
 
