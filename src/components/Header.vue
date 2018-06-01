@@ -5,7 +5,7 @@
     </section>
     <section>
       <SearchFilter
-      :filter="filter"
+      :filter="pokeFilter"
       />
     </section>
   </div>
@@ -18,7 +18,7 @@ import Sort from './Sort.vue';
 export default {
 
   props: {
-    filter: Object,
+    pokeFilter: Object,
   },
   components: {
     SearchFilter,

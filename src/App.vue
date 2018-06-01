@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <h1>Pokedex!</h1>
+    <h1>Pokedex</h1>
     <main>
       <section class="header">
         <Header
-          :filter="chosenFilter"
+          :pokeFilter="chosenFilter"
         />
-        <!-- using v-bind, pass down the variable filter, which I just assign here as "chosenFilter" -->
+        <!-- using v-bind, pass down the variable 'filter', which I just assign here as "chosenFilter" -->
       </section>
       <section class="results">
         <Results
@@ -53,6 +53,9 @@ export default {
 </script>
 
 <style>
+body {
+  font-family: 'Avenir', sans-serif;
+}
 #app {
   display: flex;
   justify-content: center;
@@ -72,7 +75,6 @@ main {
 
 .header {
   display: flex;
-
   background: lightsteelblue;
   width: 90%;
  
