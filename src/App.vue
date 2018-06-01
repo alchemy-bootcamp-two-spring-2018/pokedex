@@ -23,7 +23,10 @@ export default {
     return {
       pokeList: pokemon,
 
-      filter: {type: ''},
+      filter: {
+        type: '',
+        hp: ''
+      },
 
       sort: {name: ''}
     };
@@ -33,7 +36,11 @@ export default {
     pokeType() {
       if(!this.filter.type) return [];
       return this.pokeList.filter(pokemon => pokemon.type_1 === this.filter.type);
+    },
 
+    pokeHP() {
+      if(!this.filter.hp) return [];
+      return this.pokeList.filter(pokemon => pokemon.hp >= this.filter.hp);
     }
   },
 

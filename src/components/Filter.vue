@@ -9,6 +9,8 @@
       <option>water</option>
       <option>bug</option>
     </select>
+
+    <input v-model="filterSelection.hp" placeholder="Enter a minimum HP">
     <!-- <span>Select Type: {{ filterSelection.type }}</span> -->
   </div>
 </template>
@@ -17,6 +19,7 @@
 
 export default {
   props: [
+
     'filterSelection'
   ]
 };
