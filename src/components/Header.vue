@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Pokedex</h1>
-    <filterArea :pokemontype="filterOptions"/>
+    <filterArea :filter="filter"/>
 
   </div>
 </template>
@@ -12,6 +12,6 @@
     components: {
       filterArea
     },
-    props: ['pokemonList']
+    props: ['filter']
   };
 </script>
