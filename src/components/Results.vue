@@ -1,21 +1,23 @@
 <template>
   <div>
     <h1>Results</h1>
+    {{ pokemonList.length }}
   <div class="tile-area"> 
-    <Tiles v-for="pokemonTile in pokemonList"
-      :key="pokemonTile"
-      :pokemonTile="pokemonTile"
+    <Tile
+      v-for="pokemon in pokemonList"
+      :key="pokemon.pokemon"
+      :pokemon="pokemon"
     />
   </div>
   </div>
 </template>
 
 <script>
-  import Tiles from './Tile.vue';
+  import Tile from './Tile.vue';
   
   export default {
     components: {
-      Tiles
+      Tile
     },
     props: ['pokemonList']
   }
@@ -23,8 +25,7 @@
 
 <style>
 .tile-area {
-  display: flex;
-  flex-wrap: wrap;
+
   align-content: center;
   text-align: center;
   height: 600px;

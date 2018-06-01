@@ -1,21 +1,19 @@
 <template>
     <div class="tiles">
         <h1>
-            {{pokemonTile.pokemon}}
+            {{pokemon.pokemon}}
          </h1>
-         <img :src="pokemonTile.url_image">
+         <img :src="pokemon.url_image">
     </div> 
 </template>
 
 <script>
-
-
     export default {
         data() {
             return {
             }
         },
-        props: ['pokemonTile']
+        props: ['pokemon']
     }
 </script>
 <style>

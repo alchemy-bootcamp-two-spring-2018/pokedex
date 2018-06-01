@@ -2,10 +2,13 @@
   <div id="app">
     App area
     <section class="header">
-      <HeaderArea :pokemonType="pokemonList"/>
+      <HeaderArea 
+        :pokemonType="pokemonList"
+         :filter="filter"
+      />
     </section>
     <section class="results">
-      <ResultsViewer :pokemonList="pokemonList"/>
+      <ResultsViewer :pokemonList="filterPokemon"/>
     </section>
   </div>
 </template>
@@ -17,13 +20,30 @@ import pokemonList from './pokemon.js';
 export default {
   data() {
     return {
-      pokemonList: pokemonList
+      pokemonList: pokemonList,
+      filter: {
+        type: '',
+        pokemon: '',
+      }
     }
+
   },
       components: {
       HeaderArea,
       ResultsViewer
+    },
+  computed: {
+    filterPokemon() {
+      let filteredPokemon = [];
+      console.log(this.filter.type);
+      for(let i in this.pokemonList) {
+        if(this.pokemonList[i].type_1 === this.filter.type){
+          filteredPokemon.push(this.pokemonList[i]);
+        }
+      }
+      return filteredPokemon;
     }
+  }
 }
 
 </script>
