@@ -2,19 +2,22 @@
   <div>
     <h1>Results</h1>
   <div class="tile-area"> 
-    <tiles/>
+    <Tiles v-for="pokemonTile in pokemonList"
+      :key="pokemonTile"
+      :pokemonTile="pokemonTile"
+    />
   </div>
   </div>
 </template>
 
 <script>
-  import tiles from './Tile.vue';
+  import Tiles from './Tile.vue';
   
   export default {
     components: {
-      tiles
-    }
-
+      Tiles
+    },
+    props: ['pokemonList']
   }
 </script>
 

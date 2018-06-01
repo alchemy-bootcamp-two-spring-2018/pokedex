@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>Pokedex</h1>
-    <select class="pokemon-type">
-      <option value="all">Select Type</option>
-      <option value="water">Water</option>
-      <option value="electric">Electric</option>
-      <option value="ice">Ice</option>
-    </select>
+    <filterArea :pokemontype="filterOptions"/>
+
   </div>
 </template>
 
 <script>
+  import filterArea from "./Filter.vue";
   export default {
-
+    components: {
+      filterArea
+    },
+    props: ['pokemonList']
   };
 </script>
