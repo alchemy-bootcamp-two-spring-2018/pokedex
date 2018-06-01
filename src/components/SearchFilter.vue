@@ -4,7 +4,7 @@
       <label>Type: </label>
       <input v-model="filter.type">
       <label>Min. Atk: </label>
-      <input v-model="filter.attack">
+      <input v-model="filter.attack" type="number" min="0">
   </div>
 </template>
 
