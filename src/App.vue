@@ -39,7 +39,7 @@ export default {
         if(this.filter.type === 'all') {
           filteredPokemon.push(this.pokemonList[i]);
         }
-        else if(this.pokemonList[i].type_1 === this.filter.type){
+        else if(this.pokemonList[i].type_1 === this.filter.type || this.pokemonList[i].type_2 === this.filter.type){
           filteredPokemon.push(this.pokemonList[i]);
         }
       }
