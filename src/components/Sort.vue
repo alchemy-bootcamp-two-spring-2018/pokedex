@@ -1,7 +1,7 @@
 <template>
   <div class="sortbox">
     <h2>Sort By Attributes</h2>
-    <select>
+    <select v-model="sort.property">
       <option value="id">ID</option>
       <option value="hp">HP</option>
       <option value="attack">Attack</option>
