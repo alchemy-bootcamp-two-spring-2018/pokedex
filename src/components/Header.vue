@@ -4,7 +4,9 @@
       <Sort/>
     </section>
     <section>
-      <SearchFilter/>
+      <SearchFilter
+      :filter="filter"
+      />
     </section>
   </div>
 </template>
@@ -14,6 +16,13 @@ import SearchFilter from './SearchFilter.vue';
 import Sort from './Sort.vue';
 
 export default {
+    data () {
+      return {
+        filter: {
+          type: ''
+        }
+      }
+    },
   components: {
     SearchFilter,
     Sort
