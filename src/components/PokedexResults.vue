@@ -1,7 +1,7 @@
 <template>
   <span>
     <h2>This is our Pokedex RESULTS!</h2>
-    <Tile/>
+    <Tile :pokemonProp="pokemonProp"/>
 
   </span>
 </template>
@@ -11,7 +11,8 @@ import Tile from './Tile.vue';
 
 export default {
 
-  
+  props: ['pokemonProp'],
+
   components: {
     Tile
   }
