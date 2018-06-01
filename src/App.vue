@@ -6,7 +6,7 @@
     </section>
 
     <section>
-      <Results :pokemonList="list" :filter="filter.type"/>   
+      <Results :pokemonList="pokeType" :filter="filter.type"/>   
     </section>
 
   </div>
@@ -16,17 +16,32 @@
 
 import Header from './components/Header.vue';
 import Results from './components/Results.vue';
-import Pokemon from '../pokemon.js';
+import pokemon from '../pokemon.js';
 
 export default {
   data() {
     return {
-      list: Pokemon,
+      pokeList: pokemon,
 
-      filter: { type: ''},
+      filter: {
+        type: '',
+        hp: ''
+      },
 
-      sort: { name: ''}
+      sort: {name: ''}
     };
+  },
+
+  computed: {
+    pokeType() {
+      if(!this.filter.type) return [];
+      return this.pokeList.filter(pokemon => pokemon.type_1 === this.filter.type);
+    },
+
+    pokeHP() {
+      if(!this.filter.hp) return [];
+      return this.pokeList.filter(pokemon => pokemon.hp >= this.filter.hp);
+    }
   },
 
   components: {

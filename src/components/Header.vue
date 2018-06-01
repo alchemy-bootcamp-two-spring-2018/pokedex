@@ -1,9 +1,10 @@
 <template>
-  <div id = "header">
+
+<div id = "header">
     <h1 class="main">Pokedex</h1>
+
     <section class="filter">
       <pokemonFilter :filterSelection="filter"/>
-     
     </section>
 
     <section class="sort">
@@ -15,14 +16,14 @@
 
 <script>
 
-import pokemonFilter from './Filter.vue'
+import PokemonFilter from './Filter.vue'
 import Sort from './Sort.vue'
 
 export default {
   props: ['filter', 'sort'],
 
   components: {
-    pokemonFilter,
+    PokemonFilter,
     Sort
   }
 };

@@ -3,12 +3,10 @@
     <h1>VIEW YOUR POKEMON</h1>
     
     <Tile 
-      v-for="pokemonEach in pokemonList"
-      :key="pokemonEach.id"
-      :pokemon="pokemonEach"
+      v-for="eachPokemon in pokemonList"
+      :key="eachPokemon.id"
+      :pokemon="eachPokemon"
     />
-
-    <p> Name: {{ filter }} </p>
 
   </div>
 </template>
