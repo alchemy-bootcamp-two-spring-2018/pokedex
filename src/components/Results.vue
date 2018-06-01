@@ -11,6 +11,10 @@ import tile from './tile.vue'
 
 export default {
 
+    props: {
+      list: Array,
+    } ,
+
     components: {
         tile,
     }

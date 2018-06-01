@@ -2,13 +2,13 @@
   <div id="app">
     <h1>Poke Dex</h1>
     <section id="header-filter">
-    </section>
-      <pokeFilter
-      v-bind:filter="filter"
-      @change="updatePokedex"
+      <Header
+        v-bind:filter="filter"
       />
+    </section>
     <section id="pokemon-display">
-      <Results/>
+      <Results v-bind:list= "list"
+      />
     </section>
   </div>
 </template>
@@ -16,7 +16,7 @@
 <script>
 import pokeDex from './pokemon.js'
 import Results from './components/Results.vue'
-import pokeFilter from './components/pokeFilter.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'app',
@@ -30,7 +30,7 @@ export default {
   },
   components: {
     Results,
-    pokeFilter
+    Header
   },
   methods: {
     updatePokedex() {
