@@ -10,7 +10,7 @@
       </section>
       <section class="results">
         <Results
-          :list="pocketMonsters"
+          :list="filtered"
         />
       </section>
     </main>
@@ -28,19 +28,37 @@ export default {
       list: pokemon,
       chosenFilter: {
         type: '',
+        attack: '',
       }
     };
   },
 
   computed: {
-    pocketMonsters() {
-      let filteredPokemon = [];
-      for(let i in this.list) {
-        if(this.list[i].type_1 === this.chosenFilter.type) {
-          filteredPokemon.push(this.list[i]);
-        }
-      }
-      return filteredPokemon;
+    // filteredType() {
+    //   let filteredPokemon = [];
+    //   for(let i in this.list) {
+    //     if(this.list[i].type_1 === this.chosenFilter.type) {
+    //       filteredPokemon.push(this.list[i]);
+    //     }
+    //   }
+    //   return filteredPokemon;
+    // },
+    // filteredAttack() {
+    //   let filteredPokemon = [];
+    //   for(let i in this.list) {
+    //     if(this.list[i].attack >= this.chosenFilter.attack) {
+    //       filteredPokemon.push(this.list[i]);
+    //     }
+    //   }
+    //   return filteredPokemon;
+    // }
+
+    filtered() {
+      return this.list.filter(pokemon => {
+        
+        return (pokemon.type_1 === '' || pokemon.type_1 === this.chosenFilter.type)
+        && (pokemon.attack === '' || pokemon.attack >= this.chosenFilter.attack);
+      });
     }
   },
 
@@ -98,3 +116,14 @@ h1 {
     text-align: center;
 }
 </style>
+
+filtered() {
+  return animals.filter(function animal() {
+    return (type === '' || animal.type === type)
+  }
+  }
+}
+
+function animal() {
+  return (type === '' || animal.type === type)
+}
