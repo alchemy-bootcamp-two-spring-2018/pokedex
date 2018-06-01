@@ -39,6 +39,8 @@ export default {
       for(let i in this.list) {
         if(this.list[i].type_1 === this.chosenFilter.type) {
           filteredPokemon.push(this.list[i]);
+        } else {
+          filteredPokemon = this.list;
         }
       }
       return filteredPokemon;
