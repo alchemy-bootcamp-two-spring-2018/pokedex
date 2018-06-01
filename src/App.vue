@@ -8,7 +8,7 @@
     </section>
 
     <section class="results">
-      <PokedexResults :pokemon="list"/>
+      <PokedexResults :pokemonProp="pokemonList"/>
     </section>
     
   </div>
@@ -25,7 +25,7 @@ import pokemon from '../pokemon.js';
 export default {
   data() {
     return {
-      list: pokemon
+      pokemonList: pokemon
     };
   },
 

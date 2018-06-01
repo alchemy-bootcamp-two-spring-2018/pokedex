@@ -1,60 +1,62 @@
 <template>
   <span>
-    <h3>This is our Pokedex TILE!</h3>
-
-      <div class="content">
-      <span class="tile" v-if="pokemon">
-        <h2>{{pokemon.pokemon}}</h2>
-        <img v-bind:src="pokemon.url_image">
-        <ul>
-          <li>Type 1: {{pokemon.type_1}}</li>
-          <li>Type 2: {{pokemon.type_2}}</li>
-          <li>HP: {{pokemon.hp}}</li>
-          <li>Attack: {{pokemon.attack}}</li>
-          <li>Defense: {{pokemon.defense}}</li>
-          <li>Speed: {{pokemon.speed}}</li>
-          <li>Special Attack: {{pokemon.special_attack}}</li>
-          <li>Special Defense: {{pokemon.special_defense}}</li>
-        </ul>
-      </span>
-      <p v-else>Select a pokemon to learn more!</p>
-  </div>
-    
-
+    <section class="cards" v-if="pokemonProp">
+      <ul>
+      <li
+      class="tile"
+      v-for="pokemon in pokemonProp"
+      v-bind:key="pokemon.id"
+      >
+          <h2>{{pokemon.pokemon}}</h2>
+          <img v-bind:src="pokemon.url_image">
+            <p>Type 1: {{pokemon.type_1}}</p>
+            <p>Attack: {{pokemon.attack}}</p>
+            <p>Defense: {{pokemon.defense}}</p>
+      </li>
+      </ul>
+    </section>
+    <p v-else>Select a pokemon to learn more!</p>
   </span>
 </template>
 
 <script>
 
 export default {
-  props: ['pokemon']
+  props: ['pokemonProp']
 };
 
 </script>
 
 
 <style scoped>
-.content {
-border: 2px solid black;
-margin-left: 100px;
-}
 
-p, h2 {
-  padding: 10px;
-  text-align: center;
+h2 {
+  margin: 0px;
 }
 
 .tile {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 162px;
+  height: fit-content;
+  border: 2px solid black;
   text-transform: capitalize;
+  padding: 15px;
+  margin: 5px;
+}
+
+.tile p {
+  margin: 0px;
 }
 
 .tile img {
-  width: 400px;
+  width: 80px;
 }
 
 ul {
   width: fit-content;
-  text-align: left;
+  text-align: center;
   list-style-type: none;
 }
 
