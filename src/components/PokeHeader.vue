@@ -12,9 +12,9 @@
                 @type="$emit('type')"
                 @atk="$emit('atk')"
                 @def="$emit('def')"
-                @minatk="$emit('minatk', $event)"
-                @mindef="$emit('mindef', $event)"
             />
+                <!-- @minatk="$emit('minatk', $event)"
+                @mindef="$emit('mindef', $event)" -->
         </div>
     </div>
 </template>

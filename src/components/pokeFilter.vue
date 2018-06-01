@@ -10,20 +10,6 @@
             {{ pokes.type_1 }}
         </li>
     </ul>
-    <div id="atk-def">
-        Min-Atk:
-        <input
-            type="number"
-            v-model.number="minAtk"
-            @keypress="$emit('mindef', minAtk)"
-        />
-        Min-Def: 
-        <input
-            type="number"
-            v-model.number="minDef"
-            @keypress="$emit('mindef', minDef)"
-        />
-    </div>
 </div>
 </template>
 
@@ -32,8 +18,8 @@ export default {
     props: ['pokeList'],
     data() {
         return {
-            minAtk: '',
-            minDef: ''
+            // minatk: '',
+            // mindef: ''
         }
     }
 }

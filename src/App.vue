@@ -9,10 +9,24 @@
         @name="sortName"
         @type="sortType"
         @atk="sortAtk"
-        @def="sortDef"
-        @minatk="filterAtk"
-        @mindef="filterDef"
       />
+        <!-- @def="sortDef"
+        @minatk="filterAtk($event)"
+        @mindef="filterDef($event)" -->
+      <div id="atk-def">
+        Min-Atk:
+        <input
+            type="number"
+            v-model.number="minatk"
+            @change="filterAtk(minatk)"
+        />
+        Min-Def: 
+        <input
+            type="number"
+            v-model.number="mindef"
+            @change="filterDef(mindef)"
+        />
+      </div>
       <poke-results id="results"
         :banana="filteredList"
       />
@@ -30,11 +44,14 @@ export default {
   data() {
     return {
       pokeList: pokeList,
-      filteredList: '',
+      filteredList: {},
+      masterList: {},
       atkSort: false,
       defSort: false,
       nameSort: false,
-      typeSort: false
+      typeSort: false,
+      minatk: '',
+      mindef: ''
     }
   },
   components: {
@@ -44,7 +61,9 @@ export default {
   methods: {
     filterTypes(pokeType) {
       this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
-    },
+      // tempList used to revert back from any array mutations
+      this.masterList = this.filteredList;
+  },
     displayAll() {
       this.filteredList = this.pokeList;
     },
@@ -93,12 +112,19 @@ export default {
         }
     },
     filterAtk(minAtk) {
-      console.log('attack method');
-      this.filteredList.filter(a => a.attak > minAtk);
+      // masterList used to store current list to revert back to
+      if(this.masterList != this.filteredList) {
+        this.filteredList = this.masterList;
+      }
+      this.filteredList = this.filteredList.filter(a => a.attack > minAtk);
     },
     filterDef(minDef) {
-      console.log('defense method');
-      this.filteredList.filter(a => a.attak > minDef);
+      console.log('defense method', minDef);
+      // masterList used to store current list to revert back to
+      if(this.masterList != this.filteredList) {
+        this.filteredList = this.masterList;
+      }
+      this.filteredList = this.filteredList.filter(a => a.defense > minDef);
     }
   },
   computed: {
