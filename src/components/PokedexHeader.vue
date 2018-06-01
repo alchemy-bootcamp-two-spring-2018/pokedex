@@ -1,8 +1,11 @@
 <template>
   <span>
     <h2>This is our Pokedex HEADER component!</h2>
-    <Sort :type="type"/>
-    <SearchFilter/>
+    <Sort/>
+    <SearchFilter
+    :type="type"
+    :filter="filter"
+    />
   </span>
 </template>
 
@@ -11,7 +14,7 @@ import Sort from './Sort.vue';
 import SearchFilter from './SearchFilter.vue';
 
 export default {
-  props: ['type'],
+  props: ['type', 'filter'],
   
   components: {
     Sort,

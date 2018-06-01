@@ -3,12 +3,13 @@
     <section class="cards" v-if="pokemonProp">
       <span
       class="tile"
-      v-for="pokemon in pokemonProp"
+      v-for="pokemon in getFiltered"
       v-bind:key="pokemon.id"
       >
           <h2>{{pokemon.pokemon}}</h2>
           <img v-bind:src="pokemon.url_image">
             <p>Type 1: {{pokemon.type_1}}</p>
+            <p>Type 2: {{pokemon.type_2}}</p>
             <p>Attack: {{pokemon.attack}}</p>
             <p>Defense: {{pokemon.defense}}</p>
       </span>
@@ -20,7 +21,7 @@
 <script>
 
 export default {
-  props: ['pokemonProp']
+  props: ['pokemonProp', 'getFiltered']
 };
 
 </script>
@@ -42,7 +43,7 @@ h2 {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: 162px;
+  width: 174px;
   height: fit-content;
   border: 2px solid black;
   text-transform: capitalize;

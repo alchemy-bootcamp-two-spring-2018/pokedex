@@ -1,7 +1,10 @@
 <template>
   <span>
     <h2>This is our Pokedex RESULTS component!</h2>
-    <Tile :pokemonProp="pokemonProp"/>
+    <Tile
+    :pokemonProp="pokemonProp"
+    :getFiltered="getFiltered"
+    />
 
   </span>
 </template>
@@ -11,7 +14,7 @@ import Tile from './Tile.vue';
 
 export default {
 
-  props: ['pokemonProp'],
+  props: ['pokemonProp', 'getFiltered'],
 
   components: {
     Tile
