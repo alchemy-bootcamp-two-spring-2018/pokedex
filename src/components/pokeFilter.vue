@@ -3,7 +3,6 @@
       <span>Filter by Type</span>
       <input 
       v-model="filter.type"
-
       >
   </div>
 </template>

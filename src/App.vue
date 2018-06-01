@@ -28,7 +28,7 @@ export default {
       list: pokeDex,
       chosenFilter: {
         type: '',
-        sort: ''
+        sortValue: 'pokemon'
       }
     }
   },
@@ -42,8 +42,8 @@ export default {
   computed: {
     sorted() {
       return this.pocketMonsters.slice().sort((a, b) => { 
-        let nameA = a.pokemon;
-        let nameB = b.pokemon;
+        let nameA = a[this.chosenFilter.sortValue];
+        let nameB = b[this.chosenFilter.sortValue];
         if(nameA < nameB) {
           return -1;
         }
@@ -52,7 +52,7 @@ export default {
         }
 
         return 0;
-
+        
       });
     },
     //refactor this to use the filter array method
@@ -64,23 +64,7 @@ export default {
   },
 
   methods: {
-    // sortByName() {
-    //   this.pocketMonsters.sort((a,b) => {
-    //     let nameA = a.pokemon;
-    //     let nameB = b.pokemon;
-    //     if(nameA < nameB) {
-    //       return -1;
-    //     }
-    //     if (nameA > nameB) {
-    //       return 1;
-    //     }
 
-    //     return 0;
-
-    //   });
-    //   console.log(this.pocketMonsters)
-    //   return this.pocketMonsters;
-    // }
   }
 
 }

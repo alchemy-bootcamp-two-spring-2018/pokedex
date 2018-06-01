@@ -5,7 +5,6 @@
       />
       <Sorting
       v-bind:sorted="filter"
-      v-bind:nameSort="nameSort"
       />
       
     </div>
@@ -19,7 +18,6 @@ export default {
 
     props: {
         filter: Object,
-        nameSort: Function,
     },
 
     components: {
