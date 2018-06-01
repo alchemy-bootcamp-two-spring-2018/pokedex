@@ -1,22 +1,23 @@
 <template>
-  <div>
-    <tile 
-    v-bind:pokeTiles= "list"
-    />
-  </div>
+    <div>
+      <pokeFilter
+      v-bind:filter="filter"
+      />
+    
+    </div>
 </template>
 
 <script>
-import tile from './tile.vue'
+import pokeFilter from './pokeFilter.vue'
 
 export default {
 
     props: {
-      list: Array,
-    } ,
+        filter: Object,
+    },
 
     components: {
-        tile,
+        pokeFilter,
     }
   }
 
