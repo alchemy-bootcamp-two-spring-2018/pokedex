@@ -1,10 +1,16 @@
 <template>
-  <div class="pokeTile">
-      <span>Filter by Type</span>
-      <input 
+  <div>
+      <p>Sort by name or id</p>
+      <button
+      v.model="sorted.sort"
+      >Name</button>
+      <button
+      v.model="sorted.sort"
+      >ID#</button>
+      <!-- <input 
       v-model="filter.type"
-
-      >
+      @change="$emit('change')"
+      > -->
   </div>
 </template>
 
@@ -12,11 +18,12 @@
 
 export default {
 //props is data that is passed down from a parent to the component
-  props: ['filter'],
+  props: ['sorted'],
 
   }
 
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
