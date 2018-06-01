@@ -5,6 +5,7 @@
     <select v-model="filterSelection.type">
       <option disabled value="">Select type</option>
       <option>All</option>
+      
       <option>grass</option>
       <option>fire</option>
       <option>water</option>

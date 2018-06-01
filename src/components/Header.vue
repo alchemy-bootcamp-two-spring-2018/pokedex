@@ -4,11 +4,11 @@
     <h1 class="main">Pokedex</h1>
 
     <section class="filter">
-      <pokemonFilter :filterSelection="filter"/>
+      <PokemonFilter :filterSelection="filter"/>
     </section>
 
     <section class="sort">
-      <Sort />
+      <Sort :sort="sort"/>
     </section>
     
   </div>
