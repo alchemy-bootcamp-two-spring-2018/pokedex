@@ -1,7 +1,9 @@
 <template>
   <div>
-    <section>
-      <Tile/>
+    <section class="tile-display">
+      <Tile
+        :tiles="list"
+      />
     </section>
   </div>
   
@@ -13,8 +15,12 @@ import Tile from './Tile.vue';
 export default {
   components: {
     Tile
+  },
+
+  props: {
+    list: Array,
   }
-}
+};
 </script>
 
 <style>

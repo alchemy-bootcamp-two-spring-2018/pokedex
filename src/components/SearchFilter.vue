@@ -1,5 +1,5 @@
 <template>
-  <div class="filterbox">
+  <div class="filter-box">
     <h2>Filter</h2>
       <input v-model="filter.type">
   </div>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-.filterbox {
+.filter-box {
   float: right;
 }
 </style>
