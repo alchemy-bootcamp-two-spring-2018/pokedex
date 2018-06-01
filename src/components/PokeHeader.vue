@@ -2,27 +2,17 @@
     <div id="main">
         <h1>Manipulate your poke search!</h1>
         <button @click="$emit('all')">ALL</button>
-        <div id="filter">
-            <!-- <select>
-                <option v-for="pokes in pokeList" :key="pokes.id" @select="$emit('change', pokes.type_1)">{{ pokes.type_1 }}</option>
-            </select> -->
-            <ul>
-                <li v-for="pokes in pokeList" :key="pokes.id" @click="$emit('change', pokes.type_1)">{{ pokes.type_1 }}</li>
-            </ul>
-        </div>
-        <div id="sort">
-            <!-- <select>
-                <option >Name</option>
-                <option>Type</option>
-                <option>Atk</option>
-                <option>Def</option>
-            </select> -->
-            <ul>
-                <li @click="$emit('name')">Name</li>
-                <li @click="$emit('type')">Type</li>
-                <li @click="$emit('atk')">Atk</li>
-                <li @click="$emit('def')">Def</li>
-            </ul>
+        <div id="container">
+            <pokeFilter id="filter"
+                :pokeList="pokeList"
+                @change="$emit('change', $event)"
+            />
+            <pokeSort id="sort"
+                @name="$emit('name')"
+                @type="$emit('type')"
+                @atk="$emit('atk')"
+                @def="$emit('def')"
+            />
         </div>
     </div>
 </template>
@@ -30,13 +20,33 @@
 
 <script>
 
+import pokeFilter from './pokeFilter.vue'
+import pokeSort from './pokeSort.vue'
+
 export default {
     props: ['pokeList'],
-    methods: {
+    components: {
+        pokeFilter,
+        pokeSort
     }
 }
 </script>
 
 <style>
+#container {
+    display: flex;
+    flex-direction: row;
 
+}
+
+#filter {
+    text-align: left;
+    width: 123px;
+    background-color: gray;
+}
+
+#sort {
+    text-align: left;
+    width: 69px;
+}
 </style>
