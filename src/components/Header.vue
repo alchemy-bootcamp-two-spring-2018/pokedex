@@ -15,14 +15,14 @@
 
 <script>
 
-import pokemonFilter from './Filter.vue'
+import PokemonFilter from './Filter.vue'
 import Sort from './Sort.vue'
 
 export default {
   props: ['filter', 'sort'],
 
   components: {
-    pokemonFilter,
+    PokemonFilter,
     Sort
   }
 };

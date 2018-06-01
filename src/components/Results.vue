@@ -1,14 +1,14 @@
 <template>
   <div>
     <h1> If this is displaying, Results is loading</h1>
+
+    <h2> Name: {{ filter }} </h2>
     
     <Tile 
       v-for="pokemonEach in pokemonList"
       :key="pokemonEach.id"
       :pokemon="pokemonEach"
     />
-
-    <p> Name: {{ filter }} </p>
 
   </div>
 </template>

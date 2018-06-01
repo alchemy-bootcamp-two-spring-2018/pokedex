@@ -6,7 +6,7 @@
     </section>
 
     <section>
-      <Results :pokemonList="list" :filter="filter.type"/>   
+      <Results :pokemonList="pokeList" :filter="filter.type"/>   
     </section>
 
   </div>
@@ -16,12 +16,12 @@
 
 import Header from './components/Header.vue';
 import Results from './components/Results.vue';
-import Pokemon from '../pokemon.js';
+import pokemon from '../pokemon.js';
 
 export default {
   data() {
     return {
-      list: Pokemon,
+      pokeList: pokemon,
 
       filter: { type: ''},
 
