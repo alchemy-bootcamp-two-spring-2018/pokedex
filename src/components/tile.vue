@@ -3,6 +3,7 @@
     <div
     v-for = 'pokeDex in pokeTiles'
     v-bind:key = 'pokeDex.id'
+    v-bind:style="{ backgroundColor: pokeDex.color_1 }" 
     class="containerTile"> 
       <span>{{pokeDex.pokemon}}</span>
       <span>{{pokeDex.type_1}}</span>

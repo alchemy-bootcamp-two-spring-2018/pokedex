@@ -4,7 +4,6 @@
     <section id="header-filter">
       <Header
         v-bind:filter="chosenFilter"
-        
       />
     </section>
     <section id="pokemon-display">
