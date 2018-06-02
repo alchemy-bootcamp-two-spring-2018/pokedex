@@ -10,7 +10,7 @@
       </section>
       <section class="results">
         <Results
-          :list="filtered"
+          :list="sorted"
         />
       </section>
     </main>
