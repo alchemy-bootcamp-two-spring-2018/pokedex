@@ -20,5 +20,4 @@ export default {
 .sortbox {
   float: left;
 }
-
 </style>

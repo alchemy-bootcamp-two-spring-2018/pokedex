@@ -18,7 +18,6 @@ import SearchFilter from './SearchFilter.vue';
 import Sort from './Sort.vue';
 
 export default {
-
   props: {
     filter: Object,
     sort: Object,
@@ -27,7 +26,6 @@ export default {
     SearchFilter,
     Sort
   }
-
 };
 </script>
 
@@ -35,5 +33,4 @@ export default {
 section.header {
   display: inline-block;
 }
-
 </style>
