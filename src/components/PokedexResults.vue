@@ -29,5 +29,6 @@ export default {
 .cards {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 </style>

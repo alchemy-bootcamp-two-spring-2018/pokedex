@@ -1,6 +1,6 @@
 <template>
-  <span>
-    Filter pokemon type:
+  <span class="menu">
+    <p>Filter pokemon type:</p>
     <select v-model="filter.type">
       <option
       v-for="item in type"
@@ -8,10 +8,8 @@
       >{{ getTitleCase(item) }}
       </option>
     </select>
-
-    Minimum attack:
-    <input id="attackInput" type="number" v-model.lazy.number="filter.attack"/>
-
+    <p>Minimum attack:</p>
+    <input type="number" v-model.lazy.number="filter.attack" id="attackInput"/>
   </span>
 </template>
 
@@ -34,5 +32,12 @@ export default {
 
 
 <style>
+p {
+  margin: 10px;
+  display: inline;
+}
 
+input {
+  width: 50px;
+}
 </style>
