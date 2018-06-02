@@ -6,7 +6,6 @@
       />
     </section>
   </div>
-  
 </template>
 
 <script>
@@ -16,7 +15,6 @@ export default {
   components: {
     Tile
   },
-
   props: {
     list: Array,
   }
@@ -24,5 +22,4 @@ export default {
 </script>
 
 <style>
-
 </style>

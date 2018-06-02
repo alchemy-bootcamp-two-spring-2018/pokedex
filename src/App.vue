@@ -14,7 +14,6 @@
         />
       </section>
     </main>
-    
   </div>
 </template>
 
@@ -29,14 +28,12 @@ export default {
       list: pokemon,
       sort: {
         property: 'id'
-
       },
       filter: {
         type: '',
       }
     };
   },
-
   computed: {
     sorted() {
       return this.filtered.slice().sort((a, b) => {
@@ -51,7 +48,6 @@ export default {
         return 0;
       });
     },
-
     filtered() {
       let filteredPokemon = [];
       for(let i in this.list) {
@@ -63,16 +59,13 @@ export default {
       }
       return filteredPokemon;
     }
-
   },
   components: {
     Header,
     Results
   }
 };
-
 </script>
-
 <style>
 body {
   font-family: 'Avenir', sans-serif;
@@ -84,7 +77,6 @@ body {
   flex-direction: column;
   background: #eee;
 }
-
 main {
   display: flex;
   justify-content: center;
@@ -93,20 +85,16 @@ main {
   width: 90%;
   margin: auto;
 }
-
 .header {
   display: flex;
   background: lightsteelblue;
   width: 90%;
- 
 }
-
 .results {
   background: peachpuff;
   width: 90%;
   overflow-y: auto;
   height: 700px;
-
 }
 h1 {
   font-size: 5em;
