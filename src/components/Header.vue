@@ -1,8 +1,10 @@
 <template>
   <div>
     <h1>Pokedex</h1>
-    <filterArea :filter="filter"/>
-    <sortArea :sort="sort"/>
+    <div id="options">
+      <filterArea :filter="filter"/>
+      <sortArea :sort="sort"/>
+    </div>
   </div>
 </template>
 
@@ -17,3 +19,12 @@
     props: ['filter', 'sort']
   };
 </script>
+<style>
+#options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+
+}
+</style>
