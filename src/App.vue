@@ -7,8 +7,7 @@
       <PokedexHeader
       :type="type"
       :filter="filter"
-      :sortedByName="sortedByName"
-      :sortedByType="sortedByType"
+      :sort="sort"
       />
     </section>
 
@@ -16,8 +15,7 @@
       <PokedexResults
       :pokemonProp="pokemonList"
       :getFiltered="getFiltered"
-      :sortedByName="sortedByName"
-      :sortedByType="sortedByType"
+      :finalSort="finalSort"
       />
     </section>
 
@@ -40,6 +38,10 @@ export default {
       filter: {
         type: 'All',
         attack: ''
+      },
+
+      sort: {
+        prop: 'pokemon'
       },
 
       type: [
@@ -72,14 +74,24 @@ export default {
   },
 
   computed: {
-    
+
+    finalSort() {
+      return this.getFiltered.slice().sort((a, b) => {
+        const x = a[this.sort.prop];
+        const y = b[this.sort.prop];
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+      })
+    },
+
     getFiltered() {
       return this.pokemonList.filter(pokemon => {
         return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
         && (this.filter.attack < 0 || pokemon.attack > this.filter.attack)
       });
     },
-
+/* 
     sortedByName() {
       return this.getFiltered.slice().sort((a, b) => {
         const x = a.pokemon.toLowerCase();
@@ -98,7 +110,7 @@ export default {
         if (x > y) {return 1;}
         return 0;
       });
-    }
+    } */
   }
 
 

@@ -1,27 +1,18 @@
 <template>
   <span>
-    <section class="cards" v-if="pokemonProp">
-      <span
-      class="tile"
-      v-for="pokemon in getFiltered"
-      v-bind:key="pokemon.id"
-      >
-          <h2 v-bind:style="{ 'color': pokemon.color_1 }">{{pokemon.pokemon}}</h2>
-          <img v-bind:src="pokemon.url_image">
-            <p>Type 1: {{pokemon.type_1}}</p>
-            <p>Type 2: {{pokemon.type_2}}</p>
-            <p>Attack: {{pokemon.attack}}</p>
-            <p>Defense: {{pokemon.defense}}</p>
-      </span>
-    </section>
-    <p v-else>Select a pokemon to learn more!</p>
+      <h2 v-bind:style="{ 'color': pokemon.color_1 }">{{pokemon.pokemon}}</h2>
+      <img v-bind:src="pokemon.url_image">
+        <p>Type 1: {{pokemon.type_1}}</p>
+        <p>Type 2: {{pokemon.type_2}}</p>
+        <p>Attack: {{pokemon.attack}}</p>
+        <p>Defense: {{pokemon.defense}}</p>
   </span>
 </template>
 
 <script>
 
 export default {
-  props: ['pokemonProp', 'getFiltered', 'sortedByName', 'sortedByType']
+  props: ['pokemon']
 };
 
 </script>
