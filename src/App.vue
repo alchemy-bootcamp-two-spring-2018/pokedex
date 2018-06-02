@@ -9,7 +9,7 @@
     </section>
     <section class="results">
       <ResultsViewer 
-      :pokemonList="filterPokemon"/>
+      :pokemonList="sorted"/>
     
     </section>
   </div>
@@ -25,16 +25,27 @@ export default {
       pokemonList: pokemonList,
       filter: {
         type: '',
-        defense: '',
+        defense: ''
+      },
+      sort: {
+        sortBy: 'pokemon'
       }
     }
-
   },
-      components: {
-      HeaderArea,
-      ResultsViewer
+    components: {
+    HeaderArea,
+    ResultsViewer
     },
   computed: {
+    sorted() {
+      return this.filterPokemon.slice().sort((a, b) => {
+        let pokemonA = a[this.sort.sortBy];
+        let pokemonB = b[this.sort.sortBy];
+        if(pokemonA === pokemonB) return 0;
+        if(pokemonA > pokemonB) return 1;
+        return -1;
+      });
+    },
     filterPokemon() {
       const{type, defense} = this.filter;
       return pokemonList.filter(pokemon => {
@@ -44,10 +55,7 @@ export default {
     }
   }
 }
-
-
 </script>
-
 <style scoped>
   #app {
     text-align: center;

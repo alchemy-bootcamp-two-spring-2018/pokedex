@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Sort By</h3>
-        <select v-model="sort">
+        <select v-model="sort.sortBy">
             <option>None</option>
             <option value="pokemon">Name(A-Z)</option>
             <option value="defense">Defense(High-Low)</option>
