@@ -3,7 +3,7 @@
     <section class="cards" v-if="pokemonProp">
       <span
       class="tile"
-      v-for="pokemon in sortedByType"
+      v-for="pokemon in getFiltered"
       v-bind:key="pokemon.id"
       >
           <h2 v-bind:style="{ 'color': pokemon.color_1 }">{{pokemon.pokemon}}</h2>

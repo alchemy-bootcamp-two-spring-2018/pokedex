@@ -39,7 +39,7 @@ export default {
 
       filter: {
         type: 'All',
-        name: ''
+        attack: ''
       },
 
       type: [
@@ -72,16 +72,12 @@ export default {
   },
 
   computed: {
+    
     getFiltered() {
-      let filteredPokemon = [];
-      for(let i = 0; i < this.pokemonList.length; i++) {
-        if(this.filter.type.toLowerCase() === 'all') {
-          filteredPokemon.push(this.pokemonList[i]);
-        } else if(this.filter.type.toLowerCase() === this.pokemonList[i].type_1 || this.filter.type.toLowerCase() === this.pokemonList[i].type_2) {
-          filteredPokemon.push(this.pokemonList[i]);
-        }
-      }
-      return filteredPokemon;
+      return this.pokemonList.filter(pokemon => {
+        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
+        && (this.filter.attack < 0 || pokemon.attack > this.filter.attack)
+      });
     },
 
     sortedByName() {

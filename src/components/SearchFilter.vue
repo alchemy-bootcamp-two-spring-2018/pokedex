@@ -10,6 +10,9 @@
       </option>
     </select>
 
+    Minimum attack:
+    <input id="attackInput" type="number" v-model.lazy.number="filter.attack"/>
+
   </span>
 </template>
 
