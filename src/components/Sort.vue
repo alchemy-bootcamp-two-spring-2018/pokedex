@@ -17,3 +17,15 @@
         props: ['sort']
     }
 </script>
+<style scoped>
+    div {
+        
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    h3 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+</style>
