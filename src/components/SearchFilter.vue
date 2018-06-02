@@ -1,7 +1,6 @@
 <template>
   <span>
-    <h3>This is our Pokedex FILTER component!</h3>
-    Select a Pokemon type:
+    Filter pokemon type:
     <select v-model="filter.type">
       <option
       v-for="item in type"
@@ -9,6 +8,9 @@
       >{{ getTitleCase(item) }}
       </option>
     </select>
+
+    Minimum attack:
+    <input id="attackInput" type="number" v-model.lazy.number="filter.attack"/>
 
   </span>
 </template>

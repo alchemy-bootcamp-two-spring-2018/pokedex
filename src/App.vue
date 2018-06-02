@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-
     <title>Pokedex</title>
-    <h1>This is our pokedex APP!</h1>
+    
     <section class="header">
       <PokedexHeader
       :type="type"
       :filter="filter"
-      :sortedByName="sortedByName"
+      :sort="sort"
       />
     </section>
 
@@ -15,7 +14,7 @@
       <PokedexResults
       :pokemonProp="pokemonList"
       :getFiltered="getFiltered"
-      :sortedByName="sortedByName"
+      :finalSort="finalSort"
       />
     </section>
 
@@ -37,7 +36,11 @@ export default {
 
       filter: {
         type: 'All',
-        name: ''
+        attack: ''
+      },
+
+      sort: {
+        prop: 'pokemon'
       },
 
       type: [
@@ -70,32 +73,24 @@ export default {
   },
 
   computed: {
-    getFiltered() {
-      let filteredPokemon = [];
-      for(let i = 0; i < this.pokemonList.length; i++) {
-        if(this.filter.type.toLowerCase() === 'all') {
-          filteredPokemon.push(this.pokemonList[i]);
-        } else if(this.filter.type.toLowerCase() === this.pokemonList[i].type_1 || this.filter.type.toLowerCase() === this.pokemonList[i].type_2) {
-          filteredPokemon.push(this.pokemonList[i]);
-        }
-      }
-      return filteredPokemon;
+
+    finalSort() {
+      return this.getFiltered.slice().sort((a, b) => {
+        const x = a[this.sort.prop];
+        const y = b[this.sort.prop];
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+      })
     },
 
-    sortedByName() {
-      return this.getFiltered.slice().sort((a, b) => {
-        const x = a.pokemon.toLowerCase();
-        const y = b.pokemon.toLowerCase();
-        if(x < y) {return -1;}
-        if(x > y) {return 1;}
-        return 0;
+    getFiltered() {
+      return this.pokemonList.filter(pokemon => {
+        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
+        && (this.filter.attack < 0 || pokemon.attack > this.filter.attack)
       });
-    }
+    },
   }
-
-
-  // sorted() {
-  //     return this.filtered.slice().sort((a, b) => { /*...*/ });
 
 };
 </script>

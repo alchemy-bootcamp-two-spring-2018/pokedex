@@ -1,13 +1,12 @@
 <template>
   <span>
-    <h3>This is our Pokedex SORT component!</h3>
-    <ul>
-      <li>Name</li>
-      <li>Type</li>
-      <li>Attack</li>
-      <li>Defense</li>
-
-    </ul>
+    Sort pokemon by:
+    <select v-model="sort.prop">
+      <option value="pokemon">Name</option>
+      <option value="type_1">Type 1</option>
+      <option value="attack">Attack</option>
+      <option value="defense">Defense</option>
+    </select>
   </span>
 </template>
 
@@ -15,7 +14,7 @@
 
 export default {
 
-  props: ['sortedByName']
+  props: ['sort']
 
 };
 

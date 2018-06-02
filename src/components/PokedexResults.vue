@@ -1,12 +1,12 @@
 <template>
   <span>
-    <h2>This is our Pokedex RESULTS component!</h2>
-    <Tile
-    :pokemonProp="pokemonProp"
-    :getFiltered="getFiltered"
-    :sortedByName="sortedByName"
-    />
-
+      <span class="cards">
+        <Tile
+        v-for="pokemon in finalSort"
+        v-bind:key="pokemon.id"
+        :pokemon="pokemon"
+        />
+      </span>
   </span>
 </template>
 
@@ -15,7 +15,7 @@ import Tile from './Tile.vue';
 
 export default {
 
-  props: ['pokemonProp', 'getFiltered', 'sortedByName'],
+  props: ['finalSort'],
 
   components: {
     Tile
@@ -26,5 +26,8 @@ export default {
 
 
 <style>
-
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+}
 </style>
