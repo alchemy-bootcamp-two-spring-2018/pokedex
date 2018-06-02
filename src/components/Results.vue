@@ -24,5 +24,11 @@ export default {
 </script>
 
 <style>
-
+.tile-display {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+}
 </style>

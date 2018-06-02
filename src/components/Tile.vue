@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style>
-  ul {
+ul {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;

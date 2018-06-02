@@ -33,21 +33,16 @@ export default {
         attack: '',
       },
       chosenSort: {
-        prop: ''
+        prop: 'pokemon'
       }
     };
   },
 
   computed: {
-    // const propA = a[this.chosenSort.prop];
-    // const propB = b[this.chosenSort.prop];
-    // if(propA === propB) return 0;
-    // if(propA > propB) return 1;
-    // return -1; 
     sorted() {
       return this.filtered.slice().sort((a, b) => {
-        const x = a.pokemon.toLowerCase();
-        const y = b.pokemon.toLowerCase();
+        const x = a[this.chosenSort.prop];
+        const y = b[this.chosenSort.prop];
         if(x < y) return -1;
         if(x > y) return 1;
         return 0;
@@ -55,7 +50,6 @@ export default {
     },
     filtered() {
       return this.list.filter(pokemon => {
-        
         return (pokemon.type_1 === '' || pokemon.type_1 === this.chosenFilter.type)
         && (pokemon.attack === '' || pokemon.attack >= this.chosenFilter.attack);
       });
@@ -94,7 +88,6 @@ main {
   display: flex;
   background: lightsteelblue;
   width: 90%;
- 
 }
 
 .results {
@@ -102,28 +95,16 @@ main {
   width: 90%;
   overflow-y: auto;
   height: 700px;
-
 }
 h1 {
   font-size: 5em;
-    color: rgb(255, 247, 0);
-    line-height: 1em;
-    text-shadow: 3px 5px 1px rgb(12, 27, 168);
-    -webkit-text-stroke-color: rgb(3, 12, 247);
-    -webkit-text-stroke-width: 3px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    text-align: center;
+  color: rgb(255, 247, 0);
+  line-height: 1em;
+  text-shadow: 3px 5px 1px rgb(12, 27, 168);
+  -webkit-text-stroke-color: rgb(3, 12, 247);
+  -webkit-text-stroke-width: 3px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 </style>
-
-filtered() {
-  return animals.filter(function animal() {
-    return (type === '' || animal.type === type)
-  }
-  }
-}
-
-function animal() {
-  return (type === '' || animal.type === type)
-}
