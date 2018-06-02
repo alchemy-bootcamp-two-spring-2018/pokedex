@@ -40,7 +40,6 @@ export default {
   computed: {
     sorted() {
       return this.filtered.slice().sort((a, b) => {
-        console.log('propertyA', propertyA); 
         let propertyA = a[this.sort.property];
         let propertyB = b[this.sort.property];
         if(propertyA < propertyB) {
@@ -49,11 +48,8 @@ export default {
         if(propertyA > propertyB) {
           return 1;
         }
-        
         return 0;
-        
       });
-
     },
 
     filtered() {
