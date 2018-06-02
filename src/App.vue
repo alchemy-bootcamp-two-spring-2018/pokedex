@@ -49,10 +49,15 @@ export default {
       });
     },
     filtered() {
-      return this.list.filter(pokemon => {
-        return (pokemon.type_1 === '' || pokemon.type_1 === this.chosenFilter.type)
-        && (pokemon.attack === '' || pokemon.attack >= this.chosenFilter.attack);
-      });
+      if(this.chosenFilter.type === '') {
+        return this.list;
+      }
+      else {
+        return this.list.filter(pokemon => {
+          return (pokemon.type_1 === '' || pokemon.type_1 === this.chosenFilter.type)
+          && (pokemon.attack === '' || pokemon.attack >= this.chosenFilter.attack);
+        });
+      }
     }
   },
 
