@@ -10,7 +10,6 @@
     <section id="pokemon-display">
       <Results v-bind:list="sorted"
       />
-      <p>Get started by typing in your favorite Pokemon type (Water, Fire, Electric, Ground, etc).</p>
     </section>
   </div>
 </template>
