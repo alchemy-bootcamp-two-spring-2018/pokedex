@@ -10,7 +10,7 @@
       </section>
       <section class="results">
         <Results
-          :list="pocketMonsters"
+          :list="filtered"
         />
       </section>
     </main>
@@ -38,7 +38,25 @@ export default {
   },
 
   computed: {
-    pocketMonsters() {
+    sorted() {
+      return this.filtered.slice().sort((a, b) => {
+        console.log('propertyA', propertyA); 
+        let propertyA = a[this.sort.property];
+        let propertyB = b[this.sort.property];
+        if(propertyA < propertyB) {
+          return -1;
+        }
+        if(propertyA > propertyB) {
+          return 1;
+        }
+        
+        return 0;
+        
+      });
+
+    },
+
+    filtered() {
       let filteredPokemon = [];
       for(let i in this.list) {
         if(this.filter.type === '') {
