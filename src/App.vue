@@ -1,7 +1,17 @@
 <template>
   <div id="app">
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    </head>
     <title>Pokedex</title>
-    
+    <header>
+      <img id="pokemonTitle" src="./assets/pokemon.png" width="400px">
+      <br>
+      <img src="./assets/pikachu.png" width="130px">
+      <img src="./assets/pokeball.png" width="130px">
+      <img src="./assets/pokedex.png" width="150px">
+    </header>
+
     <section class="header">
       <PokedexHeader
       :type="type"
@@ -97,5 +107,30 @@ export default {
 
 
 <style>
+#app {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-image: url(./assets/background.jpg);
+  background-position: top;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: url('./assets/cursor_pikachu.png'), pointer;
+  min-width: 700px;
+}
 
+select {
+  cursor: pointer;
+}
+
+.header {
+  margin: 20px;
+  font-size: 24px;
+  font-family: 'Baloo', cursive;
+}
+
+header img {
+  margin: 15px;
+}
 </style>
