@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-
     <title>Pokedex</title>
-    <h1>This is our pokedex APP!</h1>
+    
     <section class="header">
       <PokedexHeader
       :type="type"
@@ -91,31 +90,7 @@ export default {
         && (this.filter.attack < 0 || pokemon.attack > this.filter.attack)
       });
     },
-/* 
-    sortedByName() {
-      return this.getFiltered.slice().sort((a, b) => {
-        const x = a.pokemon.toLowerCase();
-        const y = b.pokemon.toLowerCase();
-        if(x < y) {return -1;}
-        if(x > y) {return 1;}
-        return 0;
-      });
-    },
-
-    sortedByType() {
-      return this.getFiltered.slice().sort((a, b) => {
-        const x = a.type_1.toLowerCase();
-        const y = b.type_1.toLowerCase();
-        if(x < y) {return -1;}
-        if (x > y) {return 1;}
-        return 0;
-      });
-    } */
   }
-
-
-  // sorted() {
-  //     return this.filtered.slice().sort((a, b) => { /*...*/ });
 
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
   <span>
-    <h3>This is our Pokedex FILTER component!</h3>
     Filter pokemon type:
     <select v-model="filter.type">
       <option

@@ -1,6 +1,6 @@
 <template>
   <span>
-    <h3>This is our Pokedex SORT component!</h3>
+    Sort pokemon by:
     <select v-model="sort.prop">
       <option value="pokemon">Name</option>
       <option value="type_1">Type 1</option>

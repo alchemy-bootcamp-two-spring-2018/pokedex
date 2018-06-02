@@ -1,9 +1,6 @@
 <template>
   <span>
-    <h2>This is our Pokedex HEADER component!</h2>
-    <Sort
-    :sort="sort"
-    />
+    <Sort :sort="sort"/>
     <SearchFilter
     :type="type"
     :filter="filter"
