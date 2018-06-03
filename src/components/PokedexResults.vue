@@ -1,13 +1,26 @@
 <template>
-  <span>
+  <section v-if="order.prop === 'descending'">
+    <span>
       <span class="cards">
         <Tile
-        v-for="pokemon in finalSort"
+        v-for="pokemon in sortDescending"
         v-bind:key="pokemon.id"
         :pokemon="pokemon"
         />
       </span>
-  </span>
+    </span>
+  </section>
+  <section v-else>
+     <span>
+      <span class="cards">
+        <Tile
+        v-for="pokemon in sortAscending"
+        v-bind:key="pokemon.id"
+        :pokemon="pokemon"
+        />
+      </span>
+    </span>
+  </section>
 </template>
 
 <script>
@@ -15,7 +28,7 @@ import Tile from './Tile.vue';
 
 export default {
 
-  props: ['finalSort'],
+  props: ['sortAscending', 'sortDescending', 'order'],
 
   components: {
     Tile
