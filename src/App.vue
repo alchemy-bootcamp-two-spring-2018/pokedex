@@ -6,15 +6,18 @@
          :filter="filter"
          :sort="sort"
       />
-    <section class="viewer">
-      <!-- <PokemonViewer/> -->
-    </section>
     </section>
     <section class="results">
       <ResultsViewer 
-      :selected="selected"
-      @select="UpdateSelected"
-      :pokemonList="sorted"/>
+        :selected="selected"
+        @select="UpdateSelected"
+        :pokemonList="sorted"
+      />
+    </section>
+    <section class="viewer">
+      <PokemonViewer
+        :selectedPokemon="selected"
+      />
     </section>
   </div>
 </template>
@@ -41,7 +44,7 @@ export default {
     components: {
     HeaderArea,
     ResultsViewer,
-    // PokemonViewer
+    PokemonViewer
     },
   computed: {
     sorted() {
@@ -74,7 +77,6 @@ export default {
   methods: {
     UpdateSelected(pokemon) {
       this.selected = pokemon;
-      console.log(pokemon);
     }
   }
 }
@@ -85,17 +87,22 @@ export default {
     background-repeat: no-repeat; 
     background-size: cover;;
     background-attachment: fixed;
+    background-color: rgba(189, 175, 175, 0.555);
+    
   }
   #app {
     text-align: center;
     margin: -20px;
     display: grid;
+
   }
   .viewer {
     float: right; 
     margin-right: 100px;
   }
-  .header {
-
+  .viewer {
+    position: absolute;
+    right: -30px;
+    top: 50px;
   }
 </style>
