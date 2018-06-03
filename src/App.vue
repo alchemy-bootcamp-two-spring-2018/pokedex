@@ -9,25 +9,13 @@
         @name="sortName"
         @type="sortType"
         @atk="sortAtk"
+        @def="sortDef"
+        @minatk="filterAtk"
+        @mindef="filterDef"
       />
-      <div id="atk-def">
-        <label>
-        Min-Atk:
-        <input
-            type="number"
-            v-model.number="minatk"
-            @change="filterAtk(minatk)"
-        /></label>
-        <label>
-        Min-Def: 
-        <input
-            type="number"
-            v-model.number="mindef"
-            @change="filterDef(mindef)"
-        /></label>
-      </div>
       <poke-results id="results"
         :banana="filteredList"
+        @pokeTile="test"
       />
     </div>
   </div>
@@ -40,6 +28,7 @@ import pokeList from './assets/pokemon.js'
 
 export default {
   name: 'app',
+  
   data() {
     return {
       pokeList: pokeList,
@@ -64,6 +53,9 @@ export default {
 
   // METHODS
   methods: {
+    test(testing) {
+      console.log('here?', testing);
+    },
     filterTypes(pokeType) {
       this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
       // tempList used to revert back from any array mutations
@@ -76,15 +68,15 @@ export default {
           break;
         case'type':
           this.typeSort = -this.typeSort;
-          this.sortType(-this.typeSort);
+          this.sortType();
           break;
         case'atk':
           this.atkSort = -this.atkSort;
-          this.sortAtk(-this.atkSort);
+          this.sortAtk();
           break;
         case'def':
           this.defSort = -this.defSort;
-          this.sortDef(-this.defSort);
+          this.sortDef();
           break;
       }
       switch(this.filterStyle) {
@@ -150,7 +142,9 @@ export default {
     },
 
     filterAtk(minAtk) {
+      console.log('in the filterAtk', this.minatk);
       this.filterStyle = 'atk';
+      this.minatk = minAtk;
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
@@ -159,7 +153,9 @@ export default {
     },
 
     filterDef(minDef) {
+      console.log('in the filteredDef', this.mindef);
       this.filterStyle = 'def';
+      this.mindef = minDef;
       // masterList used to store current list to revert back to
       if(this.masterList != this.filteredList) {
         this.filteredList = this.masterList;
@@ -174,6 +170,19 @@ export default {
       return this.pokeList.filter((obj, pos, arr) => {
           return this.pokeList.map(mapObj => mapObj.type_1).indexOf(obj.type_1) === pos;
       });
+    },
+    // Calculates the min and max attack and defense of all
+    minAtk() {
+      return this.filteredList.concat().sort((a, b) => b.attack - a.attack)[0];
+    },
+    maxAtk() {
+      return this.filteredList.concat().sort((a, b) => a.attack - b.attack)[0];
+    },
+    minDef() {
+      return this.filteredList.concat().sort((a, b) => b.defense - a.defense)[0];
+    },
+    maxDef() {
+      return this.filteredList.concat().sort((a, b) => a.defense - b.defense)[0];
     }
   }
 }
