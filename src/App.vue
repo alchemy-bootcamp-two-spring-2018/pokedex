@@ -28,7 +28,7 @@ export default {
         defense: ''
       },
       sort: {
-        sortBy: 'pokemon'
+        sortBy: 'pokemon, attack, defense'
       }
     }
   },
@@ -38,19 +38,30 @@ export default {
     },
   computed: {
     sorted() {
-      return this.filterPokemon.slice().sort((a, b) => {
+      if(this.sort.sortBy !== 'pokemon') {
+        return this.filterPokemon.slice().sort((a, b) => {
+        let pokemonA = a[this.sort.sortBy];
+        let pokemonB = b[this.sort.sortBy];
+        if(pokemonA === pokemonB) return 0;
+        if(pokemonB > pokemonA) return 1;
+        return -1;  
+      })}
+      else {
+        return this.filterPokemon.slice().sort((a, b) => {
         let pokemonA = a[this.sort.sortBy];
         let pokemonB = b[this.sort.sortBy];
         if(pokemonA === pokemonB) return 0;
         if(pokemonA > pokemonB) return 1;
         return -1;
       });
+    }
+     
     },
     filterPokemon() {
       const{type, defense} = this.filter;
       return pokemonList.filter(pokemon => {
         return (type === 'all' || pokemon.type_1 === type || pokemon.type_2 === type)
-        &&(defense < 0 || pokemon.defense > defense);
+        &&(defense < 0 || pokemon.defense >= defense);
       });
     }
   }
