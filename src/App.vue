@@ -112,7 +112,7 @@ export default {
 
     getFiltered() {
       return this.pokemonList.filter(pokemon => {
-        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
+        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase() || pokemon.type_2 === this.filter.type.toLowerCase())
         && (this.filter.attack < 0 || pokemon.attack > this.filter.attack);
       });
     },
