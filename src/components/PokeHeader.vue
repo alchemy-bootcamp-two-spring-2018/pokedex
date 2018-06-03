@@ -14,6 +14,12 @@
                 @def="$emit('def')"
             />
         </div>
+        <poke-atk
+            @minatk="$emit('minatk', $event)"
+        />
+        <poke-def
+            @mindef="$emit('mindef', $event)"
+        />
     </div>
 </template>
 
@@ -23,6 +29,8 @@
 // Imported components from the current folder
 import pokeFilter from './pokeFilter.vue'
 import pokeSort from './pokeSort.vue'
+import pokeAtk from './pokeAtk.vue'
+import pokeDef from './pokeDef.vue'
 
 export default {
     // 'pokeList' was handed down from App.vue
@@ -30,7 +38,9 @@ export default {
     // These are the arbitrary names we gave the components we imported on lines 2? & 2? (pokeFilter.vue & pokeSort.vue)
     components: {
         pokeFilter,
-        pokeSort
+        pokeSort,
+        pokeAtk,
+        pokeDef
     }
 }
 </script>

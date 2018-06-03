@@ -6,6 +6,7 @@
     <div class="pokes"
         v-else
         v-for="poke in banana"
+        @click="$emit('pokeTile', poke)"
         :key="poke.id"
         :style="{ backgroundColor: poke.color_1 }"
         >

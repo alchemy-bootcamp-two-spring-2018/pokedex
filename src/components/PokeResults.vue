@@ -2,6 +2,7 @@
     <div id="poke">
         <pokeTiles
             :banana="banana"
+            @pokeTile="$emit('pokeTile', $event)"
         />
     </div>
 </template>
