@@ -24,7 +24,7 @@ export default {
       pokeList: pokemon,
 
       filter: {
-        type: '',
+        type: 'all',
         hp: ''
       },
 
@@ -37,7 +37,7 @@ export default {
   computed: {
     filtered() {
       return this.pokeList.filter(pokemon => {
-        if(this.filter.type === 'All') {
+        if(this.filter.type === 'all') {
           return (this.pokeList)
           && (pokemon.hp === '' || pokemon.hp >= this.filter.hp);
         }
@@ -48,32 +48,42 @@ export default {
 
     sorted() {
       if(this.sort.by === '') {
-        return this.filtered;
-      }
-
-      else if(this.sort.by === 'HP') {
-        return this.filtered.slice().sort((a, b) => a.hp - b.hp);
-      }
-
-      else if(this.sort.by === 'Type') {
-        return this.filtered.slice().sort((a, b) => {
-          const x = a.type_1.toLowerCase();
-          const y = b.type_1.toLowerCase();
-          if(x < y) return -1;
-          if(x > y) return 1;
-          return 0;
-        });
+        return (this.filtered);
       }
 
       else {
         return this.filtered.slice().sort((a, b) => {
-          const x = a.pokemon.toLowerCase();
-          const y = b.pokemon.toLowerCase();
+          const x = a[this.sort.by];
+          const y = b[this.sort.by];
           if(x < y) return -1;
           if(x > y) return 1;
           return 0;
         });
       }
+
+      // else if(this.sort.by === 'HP') {
+      //   return this.filtered.slice().sort((a, b) => a.hp - b.hp);
+      // }
+
+      // else if(this.sort.by === 'Type') {
+      //   return this.filtered.slice().sort((a, b) => {
+      //     const x = a.type_1.toLowerCase();
+      //     const y = b.type_1.toLowerCase();
+      //     if(x < y) return -1;
+      //     if(x > y) return 1;
+      //     return 0;
+      //   });
+      // }
+
+      // else {
+      //   return this.filtered.slice().sort((a, b) => {
+      //     const x = a.pokemon.toLowerCase();
+      //     const y = b.pokemon.toLowerCase();
+      //     if(x < y) return -1;
+      //     if(x > y) return 1;
+      //     return 0;
+        //});
+      //}
     }
   },
 
