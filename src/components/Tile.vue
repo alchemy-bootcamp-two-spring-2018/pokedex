@@ -47,9 +47,10 @@ h2 {
 }
 
 .tile:hover {
-  transform: scale(1.25);
-  box-shadow: -10px 10px rgba(0, 0, 0, 0.514), 0 0 black;
+  transform: translate(-10px,-10px) scale(1.15);
+  box-shadow: 3px 4px rgba(0, 0, 0, 0.308), 0 0 black;
 }
+
 .inside {
   color: rgb(255, 255, 255);
   display: flex;
