@@ -23,7 +23,12 @@
 
 <script>
 export default {
-    props: ['banana']
+    props: ['banana'],
+    data() {
+        return {
+            isMousedown: false
+        }
+    }
 }
 </script>
 
@@ -43,6 +48,12 @@ export default {
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 2px solid gray;
+    cursor: pointer;
+    background-image: url('../assets/tile.png');
+}
+
+.pokes:hover {
+    filter: saturate(3);
 }
 
 ul {

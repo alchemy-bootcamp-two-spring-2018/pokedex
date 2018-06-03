@@ -15,15 +15,25 @@
       />
       <poke-results id="results"
         :banana="filteredList"
-        @pokeTile="test"
+        @pokeTile="zoomin"
       />
     </div>
-  </div>
+
+    <transition name="fade" mode="in-out">
+      <poke-zoom id="poke-zoom"
+        :zoom="zoom"
+        :poke="this.poke"
+        @zoomout="zoomout"
+        v-if="zoom"
+      />
+    </transition>
+</div>
 </template>
 
 <script>
 import PokeHeader from './components/PokeHeader.vue'
 import PokeResults from './components/PokeResults.vue'
+import PokeZoom from './components/PokeZoom.vue'
 import pokeList from './assets/pokemon.js'
 
 export default {
@@ -41,20 +51,29 @@ export default {
       filterStyle: '',
       sortStyle: '',
       minatk: 0,
-      mindef: 0
+      mindef: 0,
+      zoom: false,
+      poke: ''
     }
   },
 
   // COMPONENTS
   components: {
     PokeHeader,
-    PokeResults
+    PokeResults,
+    PokeZoom
   },
 
   // METHODS
   methods: {
-    test(testing) {
-      console.log('here?', testing);
+    zoomin(poke) {
+      this.poke = poke
+      console.log('zooming?');
+      this.zoom = true;
+    },
+    zoomout() {
+      console.log('unzooming?');
+      this.zoom = false;
     },
     filterTypes(pokeType) {
       this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
@@ -205,17 +224,19 @@ export default {
   }
 }
 
-
 #app {
   display: flex;
+  margin: auto;
   flex-direction: column;
   border-top: 3px solid gray;
   border-right: 3px solid black;
   border-bottom: 3px solid black;
   border-left: 3px solid gray;
-  background-color: bisque;
+  background-color: slategrey;
   width: fit-content;
+  background-image: url('assets/thread.png');
 }
+
 #app-main {
   display: flex;
   flex-direction: column;
@@ -249,6 +270,29 @@ img:hover {
 
 #results {
   padding: 13px;
+  margin: 6px;
+  height: 350px;
+  overflow: auto;
+  border-top: 3px solid black;
+  border-right: 3px solid gray;
+  border-bottom: 3px solid gray;
+  border-left: 3px solid black;
+  background-color: darkcyan;
+  background-image: url('assets/paper.png');
 }
 
+#poke-zoom {
+  position: fixed;
+  display: inline-flex;
+  width: 600px;
+  height: 100%;
+  animation: fade-in 500ms forwards;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>

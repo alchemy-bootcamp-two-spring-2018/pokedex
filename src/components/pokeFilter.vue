@@ -35,7 +35,7 @@ li {
     border-left: 1px solid black;
     border-bottom: 1px solid black;
     border-left: 1px solid gray;
-    border-radius: 3px;
+    /* border-radius: 3px; */
     box-shadow: 1px 1px 1px black;
     list-style: none;
 }
