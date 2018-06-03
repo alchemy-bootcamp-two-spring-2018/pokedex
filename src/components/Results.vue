@@ -2,8 +2,8 @@
   <div> 
   <div class="tile-area"> 
     <Tile
-      v-on:select="$emit('select', pokemon)"
       v-for="pokemon in pokemonList"
+      @select="$emit('select', $event)"
       :key="pokemon.pokemon"
       :pokemon="pokemon"
     />
@@ -15,7 +15,6 @@
   import Tile from './Tile.vue';
   
   export default {
-
     components: {
       Tile
     },

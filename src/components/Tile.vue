@@ -1,6 +1,6 @@
 <template>
   <div class="tiles" 
-    v-on:click="$emit('select', pokemon)"
+    v-on:click="$emit('select', pokemon.pokemon)"
     :style="{background:pokemon.color_1}">
     <h3>
       {{pokemon.pokemon}}
@@ -15,11 +15,6 @@
 
 <script>
   export default {
-    data() {
-      return {
-        pokemon
-    }
-  },
   props: ['pokemon', 'select']
   }
 </script>

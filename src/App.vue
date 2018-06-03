@@ -12,7 +12,7 @@
     </section>
     <section class="results">
       <ResultsViewer 
-      v-on:select="UpdateSelected"
+      @select="UpdateSelected"
       :pokemonList="sorted"/>
     </section>
   </div>
@@ -71,8 +71,8 @@ export default {
     }
   },
   methods: {
-    UpdateSelected(pokemon) {
-      console.log(this.selected.pokemon);
+    UpdateSelected() {
+      console.log(this.pokemon.pokemon);
     }
   }
 }
