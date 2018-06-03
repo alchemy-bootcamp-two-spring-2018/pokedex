@@ -6,11 +6,14 @@
          :filter="filter"
          :sort="sort"
       />
+    <section class="viewer">
+      <!-- <PokemonViewer/> -->
+    </section>
     </section>
     <section class="results">
       <ResultsViewer 
+      v-on:select="UpdateSelected"
       :pokemonList="sorted"/>
-    
     </section>
   </div>
 </template>
@@ -19,6 +22,7 @@
 import HeaderArea from './components/Header.vue';
 import ResultsViewer from './components/Results.vue';
 import pokemonList from './pokemon.js';
+import PokemonViewer from './components/Viewer.vue';
 export default {
   data() {
     return {
@@ -34,7 +38,8 @@ export default {
   },
     components: {
     HeaderArea,
-    ResultsViewer
+    ResultsViewer,
+    // PokemonViewer
     },
   computed: {
     sorted() {
@@ -64,13 +69,31 @@ export default {
         &&(defense < 0 || pokemon.defense >= defense);
       });
     }
+  },
+  methods: {
+    UpdateSelected(pokemon) {
+      console.log(this.selected.pokemon);
+    }
   }
 }
 </script>
-<style scoped>
+<style>
+  html {
+    background-image: url('https://orig00.deviantart.net/95ef/f/2016/311/0/f/pokemon_twitch_theme_a_2a_by_masterq2-danm4kn.gif');
+    background-repeat: no-repeat; 
+    background-size: cover;;
+    background-attachment: fixed;
+  }
   #app {
     text-align: center;
-    background: rgba(220, 20, 20, 0.918);
     margin: -20px;
+    display: grid;
+  }
+  .viewer {
+    float: right; 
+    margin-right: 100px;
+  }
+  .header {
+
   }
 </style>

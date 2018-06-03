@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <h1>Results</h1>
-    {{ pokemonList.length }}
+  <div> 
   <div class="tile-area"> 
     <Tile
+      v-on:select="$emit('select', pokemon)"
       v-for="pokemon in pokemonList"
       :key="pokemon.pokemon"
       :pokemon="pokemon"
@@ -16,10 +15,11 @@
   import Tile from './Tile.vue';
   
   export default {
+
     components: {
       Tile
     },
-    props: ['pokemonList']
+    props: ['pokemonList', 'select']
   }
 </script>
 
@@ -29,9 +29,9 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  height: 600px;
+  height: 36.5em;
   overflow: auto;
-  width: 80%;
-  margin: auto;
+  width: 63em;
+  margin-left: -30px;
 }
 </style>

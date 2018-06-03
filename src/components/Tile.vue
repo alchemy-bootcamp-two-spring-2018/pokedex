@@ -1,5 +1,7 @@
 <template>
-  <div class="tiles" v-bind:style="{background:pokemon.color_1}">
+  <div class="tiles" 
+    v-on:click="$emit('select', pokemon)"
+    :style="{background:pokemon.color_1}">
     <h3>
       {{pokemon.pokemon}}
     </h3>
@@ -15,9 +17,10 @@
   export default {
     data() {
       return {
+        pokemon
     }
   },
-  props: ['pokemon']
+  props: ['pokemon', 'select']
   }
 </script>
 <style>
@@ -36,4 +39,11 @@
     margin: 2px;
     padding-bottom: 5px;
   }
+  .tiles:hover {
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+    cursor: pointer;
+  }
+
 </style>

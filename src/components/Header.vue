@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Pokedex</h1>
     <div id="options">
       <filterArea :filter="filter"/>
       <sortArea :sort="sort"/>
@@ -23,8 +22,8 @@
 #options {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items:center;
-
+  margin-top: 35px;
+  margin-left: 100px;
+  
 }
 </style>
