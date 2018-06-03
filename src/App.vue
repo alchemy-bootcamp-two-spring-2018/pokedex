@@ -96,13 +96,15 @@ export default {
     display: grid;
 
   }
-  .viewer {
-    float: right; 
-    margin-right: 100px;
+  .results {
+    position: absolute;
+    top: 90px;
+    left: -40px;
+
   }
   .viewer {
     position: absolute;
-    right: -30px;
+    right: 80px;
     top: 50px;
   }
 </style>

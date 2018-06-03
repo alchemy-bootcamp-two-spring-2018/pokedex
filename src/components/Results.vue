@@ -32,6 +32,6 @@
   height: 36.5em;
   overflow: auto;
   width: 63em;
-  margin-left: -30px;
+
 }
 </style>
