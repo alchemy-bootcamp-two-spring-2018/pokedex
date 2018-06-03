@@ -10,8 +10,6 @@ body {
     background: linear-gradient(cyan, darkcyan);
     background-size: 400% 400%;
     animation: back-glow 13s alternate ease-in-out infinite;
-}
-
-#app {
-    margin: auto;
+    margin: 0;
+    padding: 0;
 }

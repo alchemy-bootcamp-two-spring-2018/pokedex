@@ -14,12 +14,14 @@
                 @def="$emit('def')"
             />
         </div>
-        <poke-atk
-            @minatk="$emit('minatk', $event)"
-        />
-        <poke-def
-            @mindef="$emit('mindef', $event)"
-        />
+        <div id="min-filters">
+            <poke-atk id="atk"
+                @minatk="$emit('minatk', $event)"
+            />
+            <poke-def id="def"
+                @mindef="$emit('mindef', $event)"
+            />
+        </div>
     </div>
 </template>
 
@@ -70,5 +72,18 @@ export default {
     padding: 6px;
     text-align: left;
     /* border: 1px solid red; */
+}
+
+#min-filters {
+    display: flex;
+    justify-content: space-around;
+}
+
+#atk {
+    display: inline;
+}
+
+#def {
+    display: inline;
 }
 </style>
