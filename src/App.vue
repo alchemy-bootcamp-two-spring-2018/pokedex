@@ -60,7 +60,6 @@ export default {
         return -1;
       });
     }
-     
     },
     filterPokemon() {
       const{type, defense} = this.filter;
@@ -71,8 +70,8 @@ export default {
     }
   },
   methods: {
-    UpdateSelected() {
-      console.log(this.pokemon.pokemon);
+    UpdateSelected(pokemon) {
+      console.log(pokemon);
     }
   }
 }

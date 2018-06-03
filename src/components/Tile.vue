@@ -1,6 +1,6 @@
 <template>
   <div class="tiles" 
-    v-on:click="$emit('select', pokemon.pokemon)"
+    v-on:click="$emit('select', pokemon)"
     :style="{background:pokemon.color_1}">
     <h3>
       {{pokemon.pokemon}}
