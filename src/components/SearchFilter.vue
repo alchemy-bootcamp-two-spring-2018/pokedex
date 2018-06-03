@@ -2,7 +2,8 @@
   <div class="filter-box">
     <h2>Filter</h2>
       <label>Type: </label>
-      <select name="" id="" v-model="filter.type">
+      <select v-model="filter.type">
+        <option disabled value="">Please select a type</option>
         <option value="grass">Grass</option>
         <option value="fire">Fire</option>
         <option value="psychic">Psychic</option>
