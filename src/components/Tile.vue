@@ -1,6 +1,8 @@
 <template>
-  <div class="tiles" 
+  <div class="tiles"
+    
     v-on:click="$emit('select', pokemon)"
+    :class="['pokemon', { selected: pokemon === selected }]"
     :style="{background:pokemon.color_1}">
     <h3>
       {{pokemon.pokemon}}
@@ -15,7 +17,7 @@
 
 <script>
   export default {
-  props: ['pokemon', 'select']
+  props: ['pokemon', 'selected']
   }
 </script>
 <style>
@@ -37,8 +39,12 @@
   .tiles:hover {
     border-style: solid;
     border-width: 3px;
-    border-color: red;
+    border-color: rgb(247, 31, 31);
     cursor: pointer;
   }
+  .selected {
+    border-style: solid;
+    border-color: blue;
 
+  }
 </style>

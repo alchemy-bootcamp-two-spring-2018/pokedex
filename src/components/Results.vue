@@ -6,6 +6,7 @@
       @select="$emit('select', $event)"
       :key="pokemon.pokemon"
       :pokemon="pokemon"
+      :selected="selected"
     />
   </div>
   </div>
@@ -18,7 +19,7 @@
     components: {
       Tile
     },
-    props: ['pokemonList', 'select']
+    props: ['pokemonList', 'selected']
   }
 </script>
 

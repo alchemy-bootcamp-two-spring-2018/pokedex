@@ -12,6 +12,7 @@
     </section>
     <section class="results">
       <ResultsViewer 
+      :selected="selected"
       @select="UpdateSelected"
       :pokemonList="sorted"/>
     </section>
@@ -33,7 +34,8 @@ export default {
       },
       sort: {
         sortBy: 'pokemon, attack, defense'
-      }
+      },
+      selected: null
     }
   },
     components: {
@@ -71,6 +73,7 @@ export default {
   },
   methods: {
     UpdateSelected(pokemon) {
+      this.selected = pokemon;
       console.log(pokemon);
     }
   }
