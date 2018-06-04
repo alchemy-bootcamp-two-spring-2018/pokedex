@@ -9,7 +9,8 @@
       </option>
     </select>
     <p>Minimum attack:</p>
-    <input type="number" v-model.lazy.number="filter.attack" id="attackInput"/>
+    <!-- https://stackoverflow.com/questions/8808590/html5-number-input-type-that-takes-only-integers/17208628 -->
+    <input oninput="this.value=this.value.replace(/[^0-9]/g,'');" v-model.lazy.number="filter.attack" id="attackInput"/>
   </span>
 </template>
 
