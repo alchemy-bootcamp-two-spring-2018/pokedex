@@ -8,6 +8,7 @@
       <option value="pokemon">Name</option>
       <option value="type_1">Type</option>
       <option value="hp">HP</option>
+      <option value="defense">Defense</option>
     </select>
   </div>
 </template>
