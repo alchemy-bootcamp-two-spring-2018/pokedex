@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>This is a sort option</h1>
-
     <select v-model="sort.by">
       <option disabled value="">Sort</option>
       <option value="">None</option>
@@ -24,5 +22,9 @@ export default {
 </script>
 
 <style>
+
+select {
+  font-size: 1.25em;
+}
 
 </style>

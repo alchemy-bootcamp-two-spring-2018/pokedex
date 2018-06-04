@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>This is a Filter</h1>
-
-    <select v-model="filterSelection.type">
+    <select v-model="filterSelection.type" class="drop-down">
       <option disabled value="">Select type</option>
       <option value="all">All</option>
       <option>Bug</option>
@@ -40,5 +38,16 @@ export default {
 </script>
 
 <style>
+.drop-down {
+  font-size: 1.25em;
+  margin-right: 1em;
+}
+
+input {
+  font-size: 1.25em;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 1em;
+}
 
 </style>

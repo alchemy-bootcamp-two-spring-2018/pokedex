@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>VIEW YOUR POKEMON</h1>
-    
+  
      <Tile
       v-for="eachPokemon in pokemonList"
       :key="eachPokemon.id"

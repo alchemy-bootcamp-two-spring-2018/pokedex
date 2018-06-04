@@ -1,16 +1,16 @@
 <template>
 
-<div id = "header">
+  <div id = "header">
     <h1 class="main">Pokedex</h1>
+    <div class="controls">
+      <section class="filter">
+        <PokemonFilter :filterSelection="filter"/>
+      </section>
 
-    <section class="filter">
-      <PokemonFilter :filterSelection="filter"/>
-    </section>
-
-    <section class="sort">
-      <Sort :sort="sort"/>
-    </section>
-
+      <section class="sort">
+        <Sort :sort="sort"/>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -40,7 +40,11 @@ h1.main {
   background-color: rgb(150, 187, 196);
   padding-top: 10px;
   padding-bottom: 10px;
+}
 
+.controls {
+  display: flex;
+  justify-content: center;
 }
 
 </style>
