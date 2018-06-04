@@ -2,7 +2,7 @@
   <div class="sortbox">
     <h2>Sort</h2>
     <select v-model="chosenSort.prop">
-      <option disabled value="">Please select a type</option>
+      <option disabled value="">Sort by: </option>
       <option value="pokemon">name</option>
       <option value="attack">attack</option>
       <option value="hp">HP</option>

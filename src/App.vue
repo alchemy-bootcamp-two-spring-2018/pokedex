@@ -41,7 +41,6 @@ export default {
   computed: {
     sorted() {
       if(this.chosenSort.prop === '') {
-        //code to have default be disabled option
         return this.list;
       }
       else {
