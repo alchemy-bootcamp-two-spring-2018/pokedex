@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h1>Results</h1>
-    {{ pokemonList.length }}
+  <div> 
   <div class="tile-area"> 
     <Tile
       v-for="pokemon in pokemonList"
+      @select="$emit('select', $event)"
       :key="pokemon.pokemon"
       :pokemon="pokemon"
+      :selected="selected"
     />
   </div>
   </div>
@@ -19,7 +19,7 @@
     components: {
       Tile
     },
-    props: ['pokemonList']
+    props: ['pokemonList', 'selected']
   }
 </script>
 
@@ -29,9 +29,9 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  height: 600px;
+  height: 36.5em;
   overflow: auto;
-  width: 80%;
-  margin: auto;
+  width: 63em;
+
 }
 </style>

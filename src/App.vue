@@ -9,8 +9,15 @@
     </section>
     <section class="results">
       <ResultsViewer 
-      :pokemonList="sorted"/>
-    
+        :selected="selected"
+        @select="UpdateSelected"
+        :pokemonList="sorted"
+      />
+    </section>
+    <section class="viewer">
+      <PokemonViewer
+        :selectedPokemon="selected"
+      />
     </section>
   </div>
 </template>
@@ -19,6 +26,7 @@
 import HeaderArea from './components/Header.vue';
 import ResultsViewer from './components/Results.vue';
 import pokemonList from './pokemon.js';
+import PokemonViewer from './components/Viewer.vue';
 export default {
   data() {
     return {
@@ -29,12 +37,14 @@ export default {
       },
       sort: {
         sortBy: 'pokemon, attack, defense'
-      }
+      },
+      selected: null
     }
   },
     components: {
     HeaderArea,
-    ResultsViewer
+    ResultsViewer,
+    PokemonViewer
     },
   computed: {
     sorted() {
@@ -55,7 +65,6 @@ export default {
         return -1;
       });
     }
-     
     },
     filterPokemon() {
       const{type, defense} = this.filter;
@@ -64,13 +73,38 @@ export default {
         &&(defense < 0 || pokemon.defense >= defense);
       });
     }
+  },
+  methods: {
+    UpdateSelected(pokemon) {
+      this.selected = pokemon;
+    }
   }
 }
 </script>
-<style scoped>
+<style>
+  html {
+    background-image: url('https://orig00.deviantart.net/95ef/f/2016/311/0/f/pokemon_twitch_theme_a_2a_by_masterq2-danm4kn.gif');
+    background-repeat: no-repeat; 
+    background-size: cover;;
+    background-attachment: fixed;
+    background-color: rgba(189, 175, 175, 0.555);
+    
+  }
   #app {
     text-align: center;
-    background: rgba(220, 20, 20, 0.918);
     margin: -20px;
+    display: grid;
+
+  }
+  .results {
+    position: absolute;
+    top: 90px;
+    left: -40px;
+
+  }
+  .viewer {
+    position: absolute;
+    left: 1110px;
+    top: 50px;
   }
 </style>
