@@ -2,9 +2,10 @@
   <div class = "container" >
     <div class = "tile" v-bind:style="{ background: pokemon.color_1 }">
       <img :src="pokemon.url_image">
-      <p class = "name"> {{ pokemon.pokemon }} </p>
-      <p> HP: {{pokemon.hp}} </p>
-      <p> Type: {{pokemon.type_1}} </p>
+      <p class = "name"> {{ pokemon.pokemon }}</p>
+      <p>HP: {{ pokemon.hp }}</p>
+      <p>Defense: {{ pokemon.defense }}</p>
+      <p>Type: {{ pokemon.type_1 }}</p>
     </div>
   </div>
 </template>

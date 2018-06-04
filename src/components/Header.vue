@@ -1,28 +1,29 @@
 <template>
+
   <div id = "header">
     <h1 class="main">Pokedex</h1>
-    <section class="filter">
-      <pokemonFilter :filterSelection="filter"/>
-     
-    </section>
+    <div class="controls">
+      <section class="filter">
+        <PokemonFilter :filterSelection="filter"/>
+      </section>
 
-    <section class="sort">
-      <Sort />
-    </section>
-    
+      <section class="sort">
+        <Sort :sort="sort"/>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
 
-import pokemonFilter from './Filter.vue'
-import Sort from './Sort.vue'
+import PokemonFilter from './Filter.vue';
+import Sort from './Sort.vue';
 
 export default {
   props: ['filter', 'sort'],
 
   components: {
-    pokemonFilter,
+    PokemonFilter,
     Sort
   }
 };
@@ -39,7 +40,11 @@ h1.main {
   background-color: rgb(150, 187, 196);
   padding-top: 10px;
   padding-bottom: 10px;
+}
 
+.controls {
+  display: flex;
+  justify-content: center;
 }
 
 </style>
