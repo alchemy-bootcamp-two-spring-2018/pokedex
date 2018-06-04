@@ -85,7 +85,7 @@ export default {
   html {
     background-image: url('https://orig00.deviantart.net/95ef/f/2016/311/0/f/pokemon_twitch_theme_a_2a_by_masterq2-danm4kn.gif');
     background-repeat: no-repeat; 
-    background-size: cover;;
+    background-size: 1440px ;
     background-attachment: fixed;
     background-color: rgba(189, 175, 175, 0.555);
     
@@ -98,8 +98,8 @@ export default {
   }
   .results {
     position: absolute;
-    top: 90px;
     left: -40px;
+    top: 90px;
 
   }
   .viewer {
