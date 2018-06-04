@@ -5,12 +5,8 @@
     v-bind:key = 'pokeDex.id'
     v-bind:style="{ backgroundColor: pokeDex.color_1 }" 
     class="containerTile"> 
-      <span
-      v-bind:style="{ backgroundColor: pokeDex.color_f}"
-      >{{pokeDex.pokemon}}</span>
-      <span
-      v-bind:style="{ backgroundColor: pokeDex.color_f}"
-      >{{pokeDex.type_1}}</span>
+      <span>{{pokeDex.pokemon}}</span>
+      <span>{{pokeDex.type_1}}</span>
       <img v-bind:src="pokeDex.url_image">
       <div>
         <span>HP: {{pokeDex.hp}}</span>
@@ -62,6 +58,7 @@ a {
 .containerTile:hover{
   opacity: 1;
 }
+
 span {
   display: block;
 }
