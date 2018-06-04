@@ -5,6 +5,7 @@
     <div id="app-main">
       <poke-header id="header"
         :pokeList="remDupes"
+        :notBlank="notBlank"
         @change="filterTypes"
         @name="sortName"
         @type="sortType"
@@ -14,9 +15,13 @@
         @mindef="filterDef"
       />
       <poke-results id="results"
+        v-if="notBlank"
         :banana="filteredList"
         @pokeTile="zoomin"
       />
+      <div v-else>
+        <h1>Please select a Pokemons</h1>
+      </div>
     </div>
 
     <transition name="fade" mode="in-out">
@@ -53,6 +58,7 @@ export default {
       minatk: 0,
       mindef: 0,
       zoom: false,
+      notBlank: false,
       poke: ''
     }
   },
@@ -68,17 +74,13 @@ export default {
   methods: {
     zoomin(poke) {
       this.poke = poke
-      console.log('zooming?');
       this.zoom = true;
     },
     zoomout() {
-      console.log('unzooming?');
       this.zoom = false;
     },
-    filterTypes(pokeType) {
-      this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
-      // tempList used to revert back from any array mutations
-      this.masterList = this.filteredList;
+
+    sortTypes(pokeType) {
       // Make sure sorting options persist through type changes
       switch(this.sortStyle) {
         case'name':
@@ -98,6 +100,13 @@ export default {
           this.sortDef();
           break;
       }
+    },
+
+    filterTypes(pokeType) {
+      this.notBlank = true;
+      this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
+      // tempList used to revert back from any array mutations
+      this.masterList = this.filteredList;
       switch(this.filterStyle) {
         case('atk'):
           this.filterAtk(this.minatk);
@@ -106,6 +115,7 @@ export default {
           this.filterDef(this.mindef);
           break;
       }
+      this.sortTypes(pokeType);
     },
 
     displayAll() {
@@ -161,7 +171,6 @@ export default {
     },
 
     filterAtk(minAtk) {
-      console.log('in the filterAtk', this.minatk);
       this.filterStyle = 'atk';
       this.minatk = minAtk;
       // masterList used to store current list to revert back to
@@ -169,10 +178,10 @@ export default {
         this.filteredList = this.masterList;
       }
       this.filteredList = this.filteredList.filter(a => a.attack >= minAtk);
+      this.sortTypes();
     },
 
     filterDef(minDef) {
-      console.log('in the filteredDef', this.mindef);
       this.filterStyle = 'def';
       this.mindef = minDef;
       // masterList used to store current list to revert back to
@@ -180,6 +189,7 @@ export default {
         this.filteredList = this.masterList;
       }
       this.filteredList = this.filteredList.filter(a => a.defense >= minDef);
+      this.sortTypes();
     }
   },
 
