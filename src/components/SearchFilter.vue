@@ -4,6 +4,7 @@
       <label>Type: </label>
       <select v-model="filter.type">
         <option disabled value="">Please select a type</option>
+        <!-- <option value=""></option> -->
         <option value="grass">Grass</option>
         <option value="fire">Fire</option>
         <option value="psychic">Psychic</option>

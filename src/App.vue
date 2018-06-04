@@ -33,20 +33,26 @@ export default {
         attack: '',
       },
       chosenSort: {
-        prop: 'pokemon'
+        prop: ''
       }
     };
   },
 
   computed: {
     sorted() {
-      return this.filtered.slice().sort((a, b) => {
-        const x = a[this.chosenSort.prop];
-        const y = b[this.chosenSort.prop];
-        if(x < y) return -1;
-        if(x > y) return 1;
-        return 0;
-      });
+      if(this.chosenSort.prop === '') {
+        //code to have default be disabled option
+        return this.list;
+      }
+      else {
+        return this.filtered.slice().sort((a, b) => {
+          const x = a[this.chosenSort.prop];
+          const y = b[this.chosenSort.prop];
+          if(x < y) return -1;
+          if(x > y) return 1;
+          return 0;
+        });
+      }
     },
     filtered() {
       if(this.chosenFilter.type === '') {

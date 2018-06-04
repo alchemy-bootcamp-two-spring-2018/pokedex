@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li class="listItems">
-        <div class="card">
+        <div class="card" :style="{ backgroundColor: tiles.color_1 }">
           <img :src="tiles.url_image" alt="Pokemon image" style="width:75px">
           <div class="container">
             <h4><b>{{tiles.pokemon.charAt(0).toUpperCase() + tiles.pokemon.slice(1)}}</b></h4>
@@ -15,7 +15,6 @@
       </li>
     </ul>
   </div>
-    
 </template>
 
 <script>
@@ -43,7 +42,6 @@ p {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   margin: 10px;
-  background-color: lightsalmon;
   width: 150px;
   height: 250px;
   display: flex;
