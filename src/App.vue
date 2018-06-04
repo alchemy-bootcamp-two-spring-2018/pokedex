@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/Pokedex.png">
-    <Header :filterPreferences="filterPreferences" :typeOptions="dedupedTypes" :sortPreferences="sortPreferences"/>  
+    <Header :filterPreferences="filterPreferences" :typeOptions="dedupedTypes" :sortPreferences="sortPreferences"/>
     <Results :listToDisplay="sortedPokemon"/>
   </div>
 </template>
@@ -137,8 +137,25 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(247, 247, 247);
 }
 
+main {
+  width: 90%;
+}
+
+.header {
+  display: flex;
+  width: 90%;
+}
+
+.results {
+  width: 90%;
+}
 </style>
