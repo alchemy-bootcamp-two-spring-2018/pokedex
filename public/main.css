@@ -1,0 +1,15 @@
+@keyframes back-glow {
+    from {
+        background-position: 0 0;
+    } to {
+        background-position: 50% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(cyan, darkcyan);
+    background-size: 400% 400%;
+    animation: back-glow 13s alternate ease-in-out infinite;
+    margin: 0;
+    padding: 0;
+}
