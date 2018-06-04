@@ -1,24 +1,5 @@
 <template>
   <div id="app">
-    <h1>Manipulate your poke search!</h1>
-    <img src="./assets/ball.png" @click="displayAll">
-    <div id="app-main">
-      <poke-header id="header"
-        :pokeList="remDupes"
-        @change="filterTypes"
-        @name="sortName"
-        @type="sortType"
-        @atk="sortAtk"
-        @def="sortDef"
-        @minatk="filterAtk"
-        @mindef="filterDef"
-      />
-      <poke-results id="results"
-        :banana="filteredList"
-        @pokeTile="zoomin"
-      />
-    </div>
-
     <transition name="fade" mode="in-out">
       <poke-zoom id="poke-zoom"
         :zoom="zoom"
@@ -27,6 +8,31 @@
         v-if="zoom"
       />
     </transition>
+    <div id="app-container">
+      <h1>Manipulate your poke search!</h1>
+      <img src="./assets/ball.png" @click="displayAll">
+      <div id="app-main">
+        <poke-header id="header"
+          :pokeList="remDupes"
+          :notBlank="notBlank"
+          @change="filterTypes"
+          @name="sortName"
+          @type="sortType"
+          @atk="sortAtk"
+          @def="sortDef"
+          @minatk="filterAtk"
+          @mindef="filterDef"
+        />
+        <poke-results id="results"
+          v-if="notBlank"
+          :banana="filteredList"
+          @pokeTile="zoomin"
+        />
+        <div v-else>
+          <h1>Please select a Pokemons</h1>
+        </div>
+      </div>
+    </div>
 </div>
 </template>
 
@@ -53,6 +59,7 @@ export default {
       minatk: 0,
       mindef: 0,
       zoom: false,
+      notBlank: false,
       poke: ''
     }
   },
@@ -68,17 +75,13 @@ export default {
   methods: {
     zoomin(poke) {
       this.poke = poke
-      console.log('zooming?');
       this.zoom = true;
     },
     zoomout() {
-      console.log('unzooming?');
       this.zoom = false;
     },
-    filterTypes(pokeType) {
-      this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
-      // tempList used to revert back from any array mutations
-      this.masterList = this.filteredList;
+
+    sortTypes(pokeType) {
       // Make sure sorting options persist through type changes
       switch(this.sortStyle) {
         case'name':
@@ -98,6 +101,13 @@ export default {
           this.sortDef();
           break;
       }
+    },
+
+    filterTypes(pokeType) {
+      this.notBlank = true;
+      this.filteredList = pokeList.filter(a => a.type_1 === pokeType);
+      // tempList used to revert back from any array mutations
+      this.masterList = this.filteredList;
       switch(this.filterStyle) {
         case('atk'):
           this.filterAtk(this.minatk);
@@ -106,6 +116,7 @@ export default {
           this.filterDef(this.mindef);
           break;
       }
+      this.sortTypes(pokeType);
     },
 
     displayAll() {
@@ -161,7 +172,6 @@ export default {
     },
 
     filterAtk(minAtk) {
-      console.log('in the filterAtk', this.minatk);
       this.filterStyle = 'atk';
       this.minatk = minAtk;
       // masterList used to store current list to revert back to
@@ -169,10 +179,10 @@ export default {
         this.filteredList = this.masterList;
       }
       this.filteredList = this.filteredList.filter(a => a.attack >= minAtk);
+      this.sortTypes();
     },
 
     filterDef(minDef) {
-      console.log('in the filteredDef', this.mindef);
       this.filterStyle = 'def';
       this.mindef = minDef;
       // masterList used to store current list to revert back to
@@ -180,6 +190,7 @@ export default {
         this.filteredList = this.masterList;
       }
       this.filteredList = this.filteredList.filter(a => a.defense >= minDef);
+      this.sortTypes();
     }
   },
 
@@ -225,6 +236,13 @@ export default {
 }
 
 #app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app-container {
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -284,9 +302,10 @@ img:hover {
 #poke-zoom {
   position: fixed;
   display: inline-flex;
-  width: 600px;
+  width: 100%;
   height: 100%;
   animation: fade-in 500ms forwards;
+  z-index: 99;
 }
 
 .fade-enter-active, .fade-leave-active {

@@ -8,6 +8,7 @@
             />
             <!-- This is the arbitrary name we gave to our component on line ? -->
             <pokeSort id="header-sort"
+                v-if="notBlank"
                 @name="$emit('name')"
                 @type="$emit('type')"
                 @atk="$emit('atk')"
@@ -36,7 +37,7 @@ import pokeDef from './pokeDef.vue'
 
 export default {
     // 'pokeList' was handed down from App.vue
-    props: ['pokeList'],
+    props: ['pokeList', 'notBlank'],
     // These are the arbitrary names we gave the components we imported on lines 2? & 2? (pokeFilter.vue & pokeSort.vue)
     components: {
         pokeFilter,
