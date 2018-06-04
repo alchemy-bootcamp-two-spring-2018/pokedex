@@ -39,10 +39,10 @@ export default {
       return this.filtered.slice().sort((a, b) => {
         let propertyA = a[this.sort.property];
         let propertyB = b[this.sort.property];
-        if(propertyA < propertyB) {
+        if(propertyA > propertyB) {
           return -1;
         }
-        if(propertyA > propertyB) {
+        if(propertyA < propertyB) {
           return 1;
         }
         return 0;
