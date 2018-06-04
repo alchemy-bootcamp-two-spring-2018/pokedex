@@ -88,16 +88,16 @@ export default {
       return this.getFiltered.slice().sort((a, b) => {
         const x = a[this.sort.prop];
         const y = b[this.sort.prop];
-        if (x < y) {return -1;}
-        if (x > y) {return 1;}
+        if(x < y) {return -1;}
+        if(x > y) {return 1;}
         return 0;
-      })
+      });
     },
 
     getFiltered() {
       return this.pokemonList.filter(pokemon => {
         return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
-        && (this.filter.attack < 0 || pokemon.attack > this.filter.attack)
+        && (this.filter.attack < 0 || pokemon.attack > this.filter.attack);
       });
     },
   }
