@@ -39,19 +39,35 @@ export default {
 //lower components
   computed: {
     sorted() {
-      return this.pocketMonsters.slice().sort((a, b) => { 
-        let nameA = a[this.chosenFilter.sortValue];
-        let nameB = b[this.chosenFilter.sortValue];
-        if(nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-
-        return 0;
-        
-      });
+      if (this.pocketMonsters[this.chosenFilter.sortValue] === NaN || this.chosenFilter.sortValue === 'id'){
+        return this.pocketMonsters.slice().sort((a, b) => { 
+          let nameA = a[this.chosenFilter.sortValue];
+          let nameB = b[this.chosenFilter.sortValue];
+          if(nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+  
+          return 0;
+          
+        });
+      } else {
+          return this.pocketMonsters.slice().sort((a, b) => { 
+            let nameA = a[this.chosenFilter.sortValue];
+            let nameB = b[this.chosenFilter.sortValue];
+            if(nameA < nameB) {
+              return 1;
+            }
+            if (nameA > nameB) {
+              return -1;
+            }
+    
+            return 0;
+            
+        });
+      }
     },
     //refactor this to use the filter array method
     pocketMonsters() {
