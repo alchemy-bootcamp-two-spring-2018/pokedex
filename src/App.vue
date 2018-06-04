@@ -1,29 +1,5 @@
 <template>
   <div id="app">
-    <h1>Manipulate your poke search!</h1>
-    <img src="./assets/ball.png" @click="displayAll">
-    <div id="app-main">
-      <poke-header id="header"
-        :pokeList="remDupes"
-        :notBlank="notBlank"
-        @change="filterTypes"
-        @name="sortName"
-        @type="sortType"
-        @atk="sortAtk"
-        @def="sortDef"
-        @minatk="filterAtk"
-        @mindef="filterDef"
-      />
-      <poke-results id="results"
-        v-if="notBlank"
-        :banana="filteredList"
-        @pokeTile="zoomin"
-      />
-      <div v-else>
-        <h1>Please select a Pokemons</h1>
-      </div>
-    </div>
-
     <transition name="fade" mode="in-out">
       <poke-zoom id="poke-zoom"
         :zoom="zoom"
@@ -32,6 +8,31 @@
         v-if="zoom"
       />
     </transition>
+    <div id="app-container">
+      <h1>Manipulate your poke search!</h1>
+      <img src="./assets/ball.png" @click="displayAll">
+      <div id="app-main">
+        <poke-header id="header"
+          :pokeList="remDupes"
+          :notBlank="notBlank"
+          @change="filterTypes"
+          @name="sortName"
+          @type="sortType"
+          @atk="sortAtk"
+          @def="sortDef"
+          @minatk="filterAtk"
+          @mindef="filterDef"
+        />
+        <poke-results id="results"
+          v-if="notBlank"
+          :banana="filteredList"
+          @pokeTile="zoomin"
+        />
+        <div v-else>
+          <h1>Please select a Pokemons</h1>
+        </div>
+      </div>
+    </div>
 </div>
 </template>
 
@@ -235,6 +236,13 @@ export default {
 }
 
 #app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app-container {
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -294,9 +302,10 @@ img:hover {
 #poke-zoom {
   position: fixed;
   display: inline-flex;
-  width: 600px;
+  width: 100%;
   height: 100%;
   animation: fade-in 500ms forwards;
+  z-index: 99;
 }
 
 .fade-enter-active, .fade-leave-active {
