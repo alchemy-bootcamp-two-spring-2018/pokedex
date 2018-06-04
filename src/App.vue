@@ -32,7 +32,7 @@ export default {
     return {
       pokemonList: pokemonList,
       filter: {
-        type: '',
+        type: 'all',
         defense: ''
       },
       sort: {

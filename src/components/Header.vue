@@ -15,7 +15,7 @@
       filterArea,
       sortArea
     },
-    props: ['filter', 'sort']
+    props: ['filter', 'sort', 'pokemonType']
   };
 </script>
 <style>
