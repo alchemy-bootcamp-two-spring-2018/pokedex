@@ -17,6 +17,7 @@
       :type="type"
       :filter="filter"
       :sort="sort"
+      :order="order"
       />
     </section>
 
@@ -24,7 +25,9 @@
       <PokedexResults
       :pokemonProp="pokemonList"
       :getFiltered="getFiltered"
-      :finalSort="finalSort"
+      :sortAscending="sortAscending"
+      :sortDescending="sortDescending"
+      :order="order"
       />
     </section>
 
@@ -50,7 +53,11 @@ export default {
       },
 
       sort: {
-        prop: 'pokemon'
+        prop: 'id'
+      },
+
+      order: {
+        prop: 'ascending'
       },
 
       type: [
@@ -84,7 +91,7 @@ export default {
 
   computed: {
 
-    finalSort() {
+    sortAscending() {
       return this.getFiltered.slice().sort((a, b) => {
         const x = a[this.sort.prop];
         const y = b[this.sort.prop];
@@ -93,10 +100,19 @@ export default {
         return 0;
       });
     },
+    sortDescending() {
+      return this.getFiltered.slice().sort((a, b) => {
+        const x = a[this.sort.prop];
+        const y = b[this.sort.prop];
+        if(x > y) {return -1;}
+        if(x < y) {return 1;}
+        return 0;
+      });
+    },
 
     getFiltered() {
       return this.pokemonList.filter(pokemon => {
-        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase())
+        return (this.filter.type.toLowerCase() === 'all' || pokemon.type_1 === this.filter.type.toLowerCase() || pokemon.type_2 === this.filter.type.toLowerCase())
         && (this.filter.attack < 0 || pokemon.attack > this.filter.attack);
       });
     },
