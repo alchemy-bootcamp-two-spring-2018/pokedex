@@ -104,7 +104,7 @@ export default {
   }
   .viewer {
     position: absolute;
-    right: 80px;
+    left: 1110px;
     top: 50px;
   }
 </style>
