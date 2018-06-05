@@ -1,32 +1,22 @@
 <template>
-  <div>
-    <h3>{{listToDisplay.length}} pokemon met your criteria</h3>
-    <Tile 
-      v-for="pokemon in listToDisplay"
-      v-bind:key="pokemon.id"
-      v-bind:pokemon="pokemon"
-    /> 
-  </div>
+<div id="poke">
+    <result
+        v-for="item in list"
+        :key="item.pokemon"
+        :item="item"
+    />
+</div>
 </template>
 
 <script>
-import Tile from './Tile.vue'
-
+import result from './result.vue'
 export default {
-  components: {
-    Tile
-  },
-  props: ['listToDisplay']
-};
-
+    props: ['list'],
+    components: {
+        result
+    }
+}
 </script>
 
-<style>
-
-h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #F3DB6D;
-  text-align: center;
-}
-
+<style scoped>
 </style>

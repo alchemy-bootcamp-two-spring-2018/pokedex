@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <SearchFilter :filterPreferences="filterPreferences" :typeOptions="typeOptions"/> 
-    <Sort :sortPreferences="sortPreferences"/>
-  </div>
+    <div id="header-main">
+        <srt
+            :srt="srt"
+        />
+        <fltr
+            :fltr="fltr"
+            :types="types"
+        />
+    </div>
 </template>
 
+
 <script>
-import SearchFilter from './SearchFilter.vue'
-import Sort from './Sort.vue'
+
+// Imported components from the current folder
+import srt from './srt'
+import fltr from './fltr'
 
 export default {
-
-  props: ['filterPreferences', 'typeOptions', 'sortPreferences'],
-
-  components: {
-    SearchFilter,
-    Sort
-  }
-
-};
-
+    // These are the arbitrary names we gave the components we imported on lines 2? & 2? (pokeFilter.vue & pokeSort.vue)
+    components: {
+        srt,
+        fltr
+    },
+    // 'pokeList' was handed down from App.vue
+    props: ['srt', 'fltr', 'types']
+}
 </script>
 
-<style>
-
-
+<style scoped>
 </style>

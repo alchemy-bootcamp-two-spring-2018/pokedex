@@ -1,161 +1,130 @@
 <template>
   <div id="app">
-    <img src="./assets/Pokedex.png">
-    <Header :filterPreferences="filterPreferences" :typeOptions="dedupedTypes" :sortPreferences="sortPreferences"/>
-    <Results :listToDisplay="sortedPokemon"/>
-  </div>
+    <!-- Main Pokedex thing -->
+    <div id="app-container">
+      <h1>Manipulate your poke search!</h1>
+      <div id="app-main">
+
+        <Header id="header"
+          :types="types"
+          :srt="srt"
+          :fltr="fltr"
+        />
+
+        <Results id="results"
+          :list="list"
+        />
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
-
-import Header from './components/Header.vue'
-import Results from './components/Results.vue'
-import pokemonData from './pokemon.js'
+import Header from './components/Header'
+import Results from './components/Results'
+import pokemon from './assets/pokemon'
 
 export default {
+  name: 'app',
+  
   data() {
     return {
-      pokemonData,
-      filterPreferences: {
-        minSpeed: 0,
-        minAttack: 0,
-        minDefense: 0,
-        selectedType: 'all'
+      pokemon,
+      srt: {
+        property: 'pokemon'
       },
-      sortPreferences: {
-        sortOptions: ['name','speed', 'primary type', 'attack', 'defense'],
-        selectedSort: 'name',
-        directionOptions: ['ascending', 'descending'],
-        selectedDirection: 'ascending'
+      fltr: {
+        type: 'all',
+        atk: 0,
+        def: 0
       }
     };
   },
-
+  // COMPONENTS
   components: {
     Header,
-    Results,
+    Results
   },
 
+  // COMPUTED
   computed: {
-
-    dedupedTypes: function() {
-      const pokeTypeSet = new Set();
-      this.pokemonData.forEach(pokemon => {
-        pokeTypeSet.add(pokemon.type_1);
-        if(pokemon.type_2 != 'NA') {pokeTypeSet.add(pokemon.type_2)};
+    types() {
+      // return this.pokemon.filter((obj, pos) => {
+      //     return this.pokemon.map(mapObj => mapObj.type_1).indexOf(obj.type_1) === pos;
+      // });
+      const type1 = this.pokemon.map(p => p.type_1);
+      const type2 = this.pokemon.map(p => p.type_2);
+      const set = new Set(type1.concat(type2));
+      return [...set.values()];
+    },
+    list() {
+      return this.filtered.slice().sort((a, b) => {
+        const elementA = a[this.srt.property];
+        const elementB = b[this.srt.property];
+        if(elementA === elementB) return 0;
+        if(elementA < elementB) return 1;
+        return -1;
       });
-      const pokeTypes = [...pokeTypeSet];
-      this.sortStrings(pokeTypes);
-      pokeTypes.unshift('all');
-      return pokeTypes;
     },
-
-    filteredPokemon: function() {
-      let type = this.filterPreferences.selectedType;
-      let minSpeed = this.filterPreferences.minSpeed;
-      let minAttack = this.filterPreferences.minAttack;
-      let minDefense = this.filterPreferences.minDefense;
-      var filteredList = this.pokemonData.filter (pokemon => 
-      (type === null || type === 'all' || type === pokemon.type_1 || type === pokemon.type_2)
-      && (minSpeed === 0 || minSpeed <= pokemon.speed)
-      && (minAttack === 0 || minAttack <= pokemon.attack)
-      && (minDefense === 0 || minDefense <= pokemon.defense));
-      return filteredList;
-    },
-
-    sortedPokemon: function() {
-      const listToSort = this.filteredPokemon.slice();
-      const sortDirection = this.sortPreferences.selectedDirection;
-      switch(this.sortPreferences.selectedSort) {
-        case 'name':
-          return this.sortOnStringProperty(listToSort, 'pokemon');
-          break;
-        case 'speed':
-          return (sortDirection ==='ascending' ? 
-          listToSort.sort((a, b) => a.speed - b.speed) : 
-          listToSort.sort((a, b) => b.speed - a.speed) );
-          break;
-        case 'primary type':
-          return this.sortOnStringProperty(listToSort, 'type_1');
-          break;
-        case 'attack':
-          return (sortDirection ==='ascending' ? 
-          listToSort.sort((a, b) => a.attack - b.attack) : 
-          listToSort.sort((a, b) => b.attack - a.attack) );
-          break;
-        case 'defense':
-          return (sortDirection ==='ascending' ? 
-          listToSort.sort((a, b) => a.defense - b.defense) : 
-          listToSort.sort((a, b) => b.defense - a.defense) );
-          break;
-        default:
-          return this.sortOnStringProperty(listToSort, 'pokemon');
-      }
+    filtered() {
+      const { type, atk, def } = this.fltr;
+      return this.pokemon.slice().filter(a => {
+        return (type === 'all'
+        || a.type_1 === type)
+        && (atk < 1 || a.attack >= atk)
+        && (def < 1 || a.defense >= def);
+      });
     }
-
-  },
-  
-  methods: {
-
-    sortOnStringProperty: function(objectArray, property) {
-      const sortDirection = this.sortPreferences.selectedDirection;
-      objectArray.sort(function(a, b) {
-        var stringA = a[property].toUpperCase();
-        var stringB = b[property].toUpperCase();
-        if (stringA < stringB) {
-          return (sortDirection === 'ascending' ? -1 : 1);
-        }
-        if (stringA > stringB) {
-          return (sortDirection === 'ascending' ? 1 : -1);
-        }
-          return 0;
-      });
-      return objectArray;
-    },
-
-    sortStrings: function(array) {
-      array.sort(function(a, b) {
-        var stringA = a.toUpperCase();
-        var stringB = b.toUpperCase();
-        if (stringA < stringB) {
-          return -1;
-        }
-        if (stringA > stringB) {
-          return 1;
-        }
-          return 0;
-      });
-      return array;
-    }
-
   }
-
 }
-
-
-
 </script>
 
-<style>
-
+<style scoped>
 #app {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#app-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
   flex-direction: column;
-  background: rgb(247, 247, 247);
+  border-top: 3px solid gray;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid gray;
+  background-color: slategrey;
+  width: fit-content;
+  background-image: url('assets/thread.png');
 }
 
-main {
-  width: 90%;
-}
-
-.header {
+#app-main {
   display: flex;
-  width: 90%;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  width: 600px;
 }
 
-.results {
-  width: 90%;
+h1 {
+  text-align: center;
+}
+
+#results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 13px;
+  margin: 6px;
+  height: 350px;
+  overflow: auto;
+  border-top: 3px solid black;
+  border-right: 3px solid gray;
+  border-bottom: 3px solid gray;
+  border-left: 3px solid black;
+  background-color: darkcyan;
+  background-image: url('assets/paper.png');
 }
 </style>
