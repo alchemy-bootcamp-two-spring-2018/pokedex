@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-
-
     <!-- Main Pokedex thing -->
     <div id="app-container">
       <h1>Manipulate your poke search!</h1>
@@ -42,7 +40,6 @@ export default {
       }
     };
   },
-
   // COMPONENTS
   components: {
     Header,
