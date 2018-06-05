@@ -69,7 +69,7 @@ export default {
         });
       }
     },
-    //refactor this to use the filter array method
+
     pocketMonsters() {
       return this.list.filter(pokemon => {
         return (this.chosenFilter.type === '' || pokemon.type_1 === this.chosenFilter.type.toLowerCase() || pokemon.type_2 === this.chosenFilter.type.toLowerCase())

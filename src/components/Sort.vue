@@ -9,11 +9,6 @@
         v-bind:key = 'types.name'
         >{{types.value}}</option>
       </select>
-      
-      <!-- <input 
-      v-model="filter.type"
-      @change="$emit('change')"
-      > -->
   </div>
 </template>
 
