@@ -1,20 +1,28 @@
 <template>
 <div id="poke">
     <transition name="fade">
-    <pokeTiles
-        :banana="banana"
-        @pokeTile="$emit('pokeTile', $event)"
+    <result
+        v-for="poke in list"
+        :key="poke.pokemon"
+        :pokemon="pokemon"
+        :onZoom="onZoom"
     />
     </transition>
 </div>
 </template>
 
 <script>
-import pokeTiles from './pokeTiles.vue'
+import result from './result.vue'
 export default {
-    props: ['banana'],
+    props: {
+        list: Object,
+        onZoom: {
+            type: Function,
+            required: true
+        }
+    },
     components: {
-        pokeTiles
+        result
     }
 }
 </script>
