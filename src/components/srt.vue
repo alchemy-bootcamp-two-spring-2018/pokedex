@@ -1,10 +1,11 @@
 <template>
     <div>
-        <select v-model="srt.prop">
+        Sort:
+        <select v-model="srt.property">
             <option value="pokemon">Name</option>
             <option value="type_1">Type</option>
             <option value="shape">Shape</option>
-            <option value="attakc">Atk</option>
+            <option value="attack">Atk</option>
             <option value="defense">Def</option>
         </select>
     </div>

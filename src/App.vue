@@ -1,19 +1,10 @@
 <template>
   <div id="app">
-    <!-- Zoom in of the user selected Pokemon -->
-    <transition name="fade" mode="in-out">
-      <zoom id="zoom"
-        :poke="poke"
-        @onZoom="zoom"
-        v-if="zoomed"
-      /> 
-    </transition>
-   
+
 
     <!-- Main Pokedex thing -->
     <div id="app-container">
       <h1>Manipulate your poke search!</h1>
-      <img src="./assets/ball.png">
       <div id="app-main">
 
         <Header id="header"
@@ -24,7 +15,6 @@
 
         <Results id="results"
           :list="list"
-          :onZoom="zoom"
         />
       </div>
     </div>
@@ -34,7 +24,6 @@
 <script>
 import Header from './components/Header'
 import Results from './components/Results'
-import Zoom from './components/Zoom'
 import pokemon from './assets/pokemon'
 
 export default {
@@ -50,49 +39,41 @@ export default {
         type: 'all',
         atk: 0,
         def: 0
-      },
-      zoomed: false,
-      poke: null
-    }
+      }
+    };
   },
 
   // COMPONENTS
   components: {
     Header,
-    Results,
-    Zoom
-  },
-
-  // METHODS
-  methods: {
-    zoom: function(poke) {
-      console.log('here?', poke);
-      this.poke = poke;
-      this.zoom = !this.zoom;
-    }
+    Results
   },
 
   // COMPUTED
   computed: {
     types() {
-      return this.pokemon.filter((obj, pos) => {
-          return this.pokemon.map(mapObj => mapObj.type_1).indexOf(obj.type_1) === pos;
-      });
+      // return this.pokemon.filter((obj, pos) => {
+      //     return this.pokemon.map(mapObj => mapObj.type_1).indexOf(obj.type_1) === pos;
+      // });
+      const type1 = this.pokemon.map(p => p.type_1);
+      const type2 = this.pokemon.map(p => p.type_2);
+      const set = new Set(type1.concat(type2));
+      return [...set.values()];
     },
     list() {
       return this.filtered.slice().sort((a, b) => {
-        const elementA = a[this.sort.property];
-        const elementB = b[this.sort.property];
+        const elementA = a[this.srt.property];
+        const elementB = b[this.srt.property];
         if(elementA === elementB) return 0;
-        if(elementA > elementB) return 1;
+        if(elementA < elementB) return 1;
         return -1;
       });
     },
     filtered() {
-      const { type, atk, def } = this.filter;
+      const { type, atk, def } = this.fltr;
       return this.pokemon.slice().filter(a => {
-        type === 'all'
-        || a.type_1 === 'type'
+        return (type === 'all'
+        || a.type_1 === type)
         && (atk < 1 || a.attack >= atk)
         && (def < 1 || a.defense >= def);
       });
@@ -102,22 +83,6 @@ export default {
 </script>
 
 <style scoped>
-@keyframes ball-zoom {
-  from {
-    transform: scale(1);
-  } to {
-    transform: scale(1.5);
-  }
-}
-
-@keyframes ball-unzoom {
-  from {
-    transform: scale(1.5);
-  } to {
-    transform: scale(1);
-  }
-}
-
 #app {
   width: 100%;
   height: 100%;
@@ -150,26 +115,10 @@ h1 {
   text-align: center;
 }
 
-img {
-  align-self: center;
-  cursor: pointer;
-  animation: ball-unzoom 500ms forwards;
-}
-
-img:hover {
-  animation: ball-zoom 1s forwards;
-}
-
-#atk-def {
+#results {
   display: flex;
   justify-content: space-between;
-  padding: 6px;
-  background: black;
-  color: white;
-  /* border: 1px solid red; */
-}
-
-#results {
+  flex-wrap: wrap;
   padding: 13px;
   margin: 6px;
   height: 350px;
@@ -180,21 +129,5 @@ img:hover {
   border-left: 3px solid black;
   background-color: darkcyan;
   background-image: url('assets/paper.png');
-}
-
-#poke-zoom {
-  position: fixed;
-  display: inline-flex;
-  width: 100%;
-  height: 100%;
-  animation: fade-in 500ms forwards;
-  z-index: 99;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>

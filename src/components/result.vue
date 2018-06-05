@@ -1,15 +1,14 @@
 <template>
 <div id="tiles-main">
     <div class="pokes"
-        :style="{ backgroundColor: pokemon.color_1 }"
-        @click="onZoom(pokemon)"
+        :style="{ backgroundColor: item.color_1 }"
         >
-        <h2>{{ pokemon.pokemon }}</h2>
-        <img :src="poke.url_image">
+        <h2>{{ item.pokemon }}</h2>
+        <img :src="item.url_image">
         <ul>
-            <li>Type: {{ pokemon.type_1 }}</li>
-            <li>Attack: {{ pokemon.attack }}</li>
-            <li>Defense: {{ pokemon.defense }}</li>
+            <li>Type: {{ item.type_1 }}</li>
+            <li>Attack: {{ item.attack }}</li>
+            <li>Defense: {{ item.defense }}</li>
         </ul>
     </div>
 </div>
@@ -17,13 +16,7 @@
 
 <script>
 export default {
-    props: {
-        onZoom: {
-            type: Function,
-            required: true
-        },
-        pokemon: Object
-    }
+    props: ['item']
 }
 </script>
 

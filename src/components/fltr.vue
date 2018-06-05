@@ -1,10 +1,10 @@
 <template>
     <div>
         Type:
-        <select v-mode="fltr.type">
+        <select v-model="fltr.type">
             <option value="all">All</option>
-            <option v-for="type in types" :key="type">
-                {{ type }}
+            <option v-for="t in types" :key="t">
+                {{ t }}
             </option>
         </select>
 
